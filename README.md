@@ -16,14 +16,29 @@ Fonts will be added as I continue work on this project.
 Suitable when using a weekday band underneath the time on an 8-row matrix.
 
 ### MatrixClock-Chunky6
-![image](./MatrixClock-Chunky6.png)
+Everything big and blocky
+![image](./6-series/MatrixClock-Chunky6.png)
 
-[Download](./MatrixClock-Chunky6.bsd)
+[Download](./6-series/MatrixClock-Chunky6.bsd)
+
+### MatrixClock-LightLetters6
+The letters have been lightened a bit but the numbers are still chunky
+
+![image](./6-series/MatrixClock-LightLetters6.png)
+
+[Download](./6-series/MatrixClock-LightLetters6.bsd)
+
+### MatrixClock-Light6
+The numbers have been shaved a bit, too
+
+![image](./6-series/MatrixClock-Light6.png)
+
+[Download](./6-series/MatrixClock-Light6.bsd)
 
 ## 8-Series Fonts
 Suitable when using the full height of an 8-row matrix.
 
-### Coming Soon
+### Coming Soon...
 
 ## Authorship
 ```
