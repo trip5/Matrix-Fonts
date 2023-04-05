@@ -17,6 +17,7 @@ Suitable when using a weekday band underneath the time on an 8-row matrix.
 
 ### MatrixClock-Chunky6
 Everything big and blocky
+
 ![image](./6-series/MatrixClock-Chunky6.png)
 
 [Download](./6-series/MatrixClock-Chunky6.bsd)
