@@ -12,6 +12,14 @@ The number of characters has been extremely reduced to save flash memory.  Sorry
 
 Fonts will be added as I continue work on this project.
 
+### Using these fonts
+The code to use a BDF font in ESPHome is a lot simpler than using a TTF font, since glyph-mapping is un-needed. Your xoffset & yoffset should probably be left at default as well.
+```
+font: 
+  - file: ehmtx/MatrixClock-LightLetters6.bdf
+    id: ehmtx_font
+```
+
 ## 6-Series Fonts
 Suitable when using a weekday band underneath the time on an 8-row matrix.
 
