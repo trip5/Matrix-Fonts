@@ -31,7 +31,7 @@ Everything big and blocky
 [Download](./6-series/MatrixClock-Chunky6.bsd)
 
 ### MatrixClock-LightLetters6
-The letters have been lightened a bit but the numbers are still chunky
+Most characters have been lightened a bit but the numbers are still chunky
 
 ![image](./6-series/MatrixClock-LightLetters6.png)
 
@@ -62,7 +62,7 @@ Everything big and blocky
 [Download](./8-series/MatrixClock-Chunky8.bsd)
 
 ### MatrixClock-LightLetters8
-The letters have been lightened a bit but the numbers are still chunky
+Most characters have been lightened a bit but the numbers are still chunky
 
 ![image](./8-series/MatrixClock-LightLetters8.png)
 
