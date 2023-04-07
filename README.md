@@ -75,8 +75,6 @@ The numbers have been shaved a bit, too
 
 [Download](./8-series/MatrixClock-Light8.bsd)
 
-### Coming Soon...
-
 ## Authorship
 ```
 ** The original 3x5 font is licensed under the 3-clause BSD license:
