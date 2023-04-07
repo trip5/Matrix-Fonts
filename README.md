@@ -47,6 +47,8 @@ The numbers have been shaved and stylized
 ## 8-Series Fonts
 Suitable when using the full height of an 8-row matrix - contains the entire Latin Supplement and Extended characters and a bunch of currency characters
 
+Sorry to Europeans for now but it appears my encoding is broken... it may not work for all those extended characters... I'll fix it ASAP.
+
 When using EsphoMaTrix, check that this is in your yaml:
 ```
 ehmtx:
