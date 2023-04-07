@@ -8,8 +8,6 @@ Because BDF fonts are bitmap fonts, the size of these fonts is pixel-fixed. They
 
 Most characters will be 3 pixels wide, but certain characters like G and M and & are wider. Punctuation characters are generally 1 or 2 pixels wide.  All characters have 1 empty column on the right side... except the space itself, which is only 1 column wide. This should help when you need a bit of space between characters but don't want to lose 4-5 columns of pixels while doing so!
 
-The number of characters has been extremely reduced to save flash memory.  Sorry to the European languages but accents on letters only 5 pixels tall are nearly impossible to recognize anyway.
-
 Fonts will be added as I continue work on this project.
 
 ### Using these fonts
@@ -22,6 +20,8 @@ font:
 
 ## 6-Series Fonts
 Suitable when using a weekday band underneath the time on an 8-row matrix
+
+Sorry to the European languages but accents on letters only 5 pixels tall are nearly impossible to recognize anyway... I'll convert these to at least include the encoding in the near future, even if those chracters don't actually have any accents in the glyph itself.
 
 ### MatrixClock-Chunky6
 Everything big and blocky
