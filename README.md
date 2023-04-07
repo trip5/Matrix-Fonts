@@ -21,7 +21,7 @@ font:
 ```
 
 ## 6-Series Fonts
-Suitable when using a weekday band underneath the time on an 8-row matrix.
+Suitable when using a weekday band underneath the time on an 8-row matrix
 
 ### MatrixClock-Chunky6
 Everything big and blocky
@@ -45,7 +45,35 @@ The numbers have been shaved a bit, too
 [Download](./6-series/MatrixClock-Light6.bsd)
 
 ## 8-Series Fonts
-Suitable when using the full height of an 8-row matrix.
+Suitable when using the full height of an 8-row matrix - contains the entire Latin Supplement and Extended characters and a bunch of currency characters
+
+When using EsphoMaTrix, check that this is in your yaml:
+```
+ehmtx:
+  show_dow: false
+  yoffset: 8
+```
+
+### MatrixClock-Chunky8
+Everything big and blocky
+
+![image](./8-series/MatrixClock-Chunky8.png)
+
+[Download](./8-series/MatrixClock-Chunky8.bsd)
+
+### MatrixClock-LightLetters8
+The letters have been lightened a bit but the numbers are still chunky
+
+![image](./8-series/MatrixClock-LightLetters8.png)
+
+[Download](./8-series/MatrixClock-LightLetters8.bsd)
+
+### MatrixClock-Light8
+The numbers have been shaved a bit, too
+
+![image](./8-series/MatrixClock-Light8.png)
+
+[Download](./8-series/MatrixClock-Light8.bsd)
 
 ### Coming Soon...
 
