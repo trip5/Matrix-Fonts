@@ -38,7 +38,7 @@ Most characters have been lightened a bit but the numbers are still chunky
 [Download](./6-series/MatrixClock-LightLetters6.bsd)
 
 ### MatrixClock-Light6
-The numbers have been shaved a bit, too
+The numbers have been shaved and stylized
 
 ![image](./6-series/MatrixClock-Light6.png)
 
