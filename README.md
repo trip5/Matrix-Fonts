@@ -69,7 +69,7 @@ Most characters have been lightened a bit but the numbers are still chunky
 [Download](./8-series/MatrixClock-LightLetters8.bsd)
 
 ### MatrixClock-Light8
-The numbers have been shaved a bit, too
+The numbers have been shaved and stylized
 
 ![image](./8-series/MatrixClock-Light8.png)
 
