@@ -11,45 +11,35 @@ Most characters will be 3 pixels wide, but certain characters like G and M and &
 Fonts will be added as I continue work on this project.
 
 ### Using these fonts
-The code to use a BDF font in ESPHome is a lot simpler than using a TTF font, since glyph-mapping is un-needed. Your xoffset & yoffset should probably be left at default as well.
+To reduce the space that the font takes up during the compile please use code as such:
 ```
 font: 
   - file: ehmtx/MatrixClock-LightLetters6.bdf
     id: ehmtx_font
+    glyphs:  |
+      !"%'()*+,-.:;?@/°#<>=0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz
 ```
 
-## 6-Series Fonts
-Suitable when using a weekday band underneath the time on an 8-row matrix
+Add any needed characters from this:
+```
+$&[\]^_`{|}~^¡¢£¤¥¦§¨©ª«¬&®¯±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ
+```
+#### Extra characters
+Any characters included in the glyphs list that are not actually in the font will cause ESPHome to error when compiling. This appears to be a flaw in Pillow, a python dependency that converts fonts. Pillow interprets all BDF fonts as being in the Latin-1 codepage. Any attempts I made to force it into recognizing other encoding (like UTF-8) failed. 
 
-Sorry to the European languages but accents on letters only 5 pixels tall are nearly impossible to recognize anyway... I'll convert these to at least include the encoding in the near future, even if those chracters don't actually have any accents in the glyph itself.
-
-### MatrixClock-Chunky6
-Everything big and blocky
-
-![image](./6-series/MatrixClock-Chunky6.png)
-
-[Download](./6-series/MatrixClock-Chunky6.bsd)
-
-### MatrixClock-LightLetters6
-Most characters have been lightened a bit but the numbers are still chunky
-
-![image](./6-series/MatrixClock-LightLetters6.png)
-
-[Download](./6-series/MatrixClock-LightLetters6.bsd)
-
-### MatrixClock-Light6
-The numbers have been shaved and stylized
-
-![image](./6-series/MatrixClock-Light6.png)
-
-[Download](./6-series/MatrixClock-Light6.bsd)
+Because of this flaw, I made a few "useless" characters look like something else. You can use these special characters in Home Assistant:
+¨ → Bitcoin
+¸ → Ethereum
+¬ → Degree C
+¯ → Degree F
+¼ → Euro
+½ → Won
+¾ → Hryvnia
 
 ## 8-Series Fonts
-Suitable when using the full height of an 8-row matrix - contains the entire Latin Supplement and Extended characters and a bunch of currency characters
+Suitable when using the full height of an 8-row matrix - contains the entire Latin-1 character set and a bunch of currency characters
 
-Sorry to Europeans for now but it appears my encoding is broken... it may not work for all those extended characters... I'll fix it ASAP.
-
-When using EsphoMaTrix, check that this is in your yaml:
+When using EsphoMaTrix, check that this is in your yaml (probably):
 ```
 ehmtx:
   show_dow: false
@@ -61,21 +51,49 @@ Everything big and blocky
 
 ![image](./8-series/MatrixClock-Chunky8.png)
 
-[Download](./8-series/MatrixClock-Chunky8.bsd)
+[Download](./8-series/MatrixClock-Chunky8.bdf)
 
 ### MatrixClock-LightLetters8
 Most characters have been lightened a bit but the numbers are still chunky
 
 ![image](./8-series/MatrixClock-LightLetters8.png)
 
-[Download](./8-series/MatrixClock-LightLetters8.bsd)
+[Download](./8-series/MatrixClock-LightLetters8.bdf)
 
 ### MatrixClock-Light8
 The numbers have been shaved and stylized
 
 ![image](./8-series/MatrixClock-Light8.png)
 
-[Download](./8-series/MatrixClock-Light8.bsd)
+[Download](./8-series/MatrixClock-Light8.bdf)
+
+## 6-Series Fonts
+Suitable when using a weekday band underneath the time on an 8-row matrix
+
+Sorry to the European languages but accents on letters only 5 pixels tall are terrible. I'll convert these to at least include the encoding in the near future, even if those chracters don't actually have any accents in the glyph itself.
+
+For now, the included characters match what are in the thumbnails. Many have been omitted.
+
+### MatrixClock-Chunky6
+Everything big and blocky
+
+![image](./6-series/MatrixClock-Chunky6.png)
+
+[Download](./6-series/MatrixClock-Chunky6.bdf)
+
+### MatrixClock-LightLetters6
+Most characters have been lightened a bit but the numbers are still chunky
+
+![image](./6-series/MatrixClock-LightLetters6.png)
+
+[Download](./6-series/MatrixClock-LightLetters6.bdf)
+
+### MatrixClock-Light6
+The numbers have been shaved and stylized
+
+![image](./6-series/MatrixClock-Light6.png)
+
+[Download](./6-series/MatrixClock-Light6.bdf)
 
 ## Authorship
 ```
