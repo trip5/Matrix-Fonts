@@ -133,4 +133,4 @@ Modifications to Tom Thumb for improved readability are from Robey Pointer, see 
 
 The original author does not have any objection to relicensing of Robey Pointer's modifications (in this file) in a more permissive license.  See the discussion at the above blog, and also here: http://opengameart.org/forumtopic/how-to-submit-art-using-the-3-clause-bsd-license
 
-As such, these fonts are released under the CC-BY License: https://creativecommons.org/licenses/by/4.0/
+As such, all of these fonts are released under the CC-BY License: https://creativecommons.org/licenses/by/4.0/
