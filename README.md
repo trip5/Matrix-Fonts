@@ -25,7 +25,7 @@ Add any needed characters from this:
 {|}~¡¢£¤¥¦§¨©ª«¬®¯±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ
 ```
 #### Extra characters
-Any characters included in the glyphs list that are not actually in the font will cause ESPHome to error when compiling. This appears to be a flaw in Pillow, a python dependency that converts fonts. Pillow interprets all BDF fonts as being in the Latin-1 codepage. Any attempts I made to force it into recognizing other encoding (like UTF-8) failed. 
+Any characters included in the glyphs list that are not actually in the font will cause ESPHome to error when compiling. This appears to be a flaw in Pillow, a python dependency that converts fonts. Pillow interprets all BDF fonts as being in the Latin-1 codepage. Any attempts I made to force it into recognizing other encoding (like UTF-8) failed. The full unicode BDF files are still in the folders, if you wish to also give it an attempt.
 
 Because of this flaw, I made a few "useless" characters look like something else. You can use these special characters in Home Assistant:
 ```
@@ -53,21 +53,21 @@ Everything big and blocky
 
 ![image](./8-series/MatrixClock-Chunky8.png)
 
-[Download](./8-series/MatrixClock-Chunky8.bdf)
+[Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/darkpoet78/MatrixClockFonts/blob/main/8-series/MatrixClock-Chunky8.bdf)
 
 ### MatrixClock-LightLetters8
 Most characters have been lightened a bit but the numbers are still chunky
 
 ![image](./8-series/MatrixClock-LightLetters8.png)
 
-[Download](./8-series/MatrixClock-LightLetters8.bdf)
+[Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/darkpoet78/MatrixClockFonts/blob/main/8-series/MatrixClock-LightLetters8.bdf)
 
 ### MatrixClock-Light8
 The numbers have been shaved and stylized
 
 ![image](./8-series/MatrixClock-Light8.png)
 
-[Download](./8-series/MatrixClock-Light8.bdf)
+[Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/darkpoet78/MatrixClockFonts/blob/main/8-series/MatrixClock-Light8.bdf)
 
 ## 6-Series Fonts
 Suitable when using a weekday band underneath the time on an 8-row matrix
@@ -81,23 +81,26 @@ Everything big and blocky
 
 ![image](./6-series/MatrixClock-Chunky6.png)
 
-[Download](./6-series/MatrixClock-Chunky6.bdf)
+[Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/darkpoet78/MatrixClockFonts/blob/main/6-series/MatrixClock-Chunky6.bdf)
 
 ### MatrixClock-LightLetters6
 Most characters have been lightened a bit but the numbers are still chunky
 
 ![image](./6-series/MatrixClock-LightLetters6.png)
 
-[Download](./6-series/MatrixClock-LightLetters6.bdf)
+[Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/darkpoet78/MatrixClockFonts/blob/main/6-series/MatrixClock-LightLetters6.bdf)
 
 ### MatrixClock-Light6
 The numbers have been shaved and stylized
 
 ![image](./6-series/MatrixClock-Light6.png)
 
-[Download](./6-series/MatrixClock-Light6.bdf)
+[Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/darkpoet78/MatrixClockFonts/blob/main/6-series/MatrixClock-Light6.bdf)
 
 ## Authorship
+
+### The following notice applies to the 6-series fonts
+
 ```
 ** The original 3x5 font is licensed under the 3-clause BSD license:
 **
@@ -133,4 +136,6 @@ Modifications to Tom Thumb for improved readability are from Robey Pointer, see 
 
 The original author does not have any objection to relicensing of Robey Pointer's modifications (in this file) in a more permissive license.  See the discussion at the above blog, and also here: http://opengameart.org/forumtopic/how-to-submit-art-using-the-3-clause-bsd-license
 
-As such, all of these fonts are released under the CC-BY License: https://creativecommons.org/licenses/by/4.0/
+### The following notice applies to all fonts
+
+All of these fonts are released under the CC-BY License: https://creativecommons.org/licenses/by/4.0/
