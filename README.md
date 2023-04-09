@@ -28,6 +28,7 @@ $&[\]^_`{|}~^¡¢£¤¥¦§¨©ª«¬&®¯±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃ
 Any characters included in the glyphs list that are not actually in the font will cause ESPHome to error when compiling. This appears to be a flaw in Pillow, a python dependency that converts fonts. Pillow interprets all BDF fonts as being in the Latin-1 codepage. Any attempts I made to force it into recognizing other encoding (like UTF-8) failed. 
 
 Because of this flaw, I made a few "useless" characters look like something else. You can use these special characters in Home Assistant:
+```
 ¨ → Bitcoin
 ¸ → Ethereum
 ¬ → Degree C
@@ -35,6 +36,7 @@ Because of this flaw, I made a few "useless" characters look like something else
 ¼ → Euro
 ½ → Won
 ¾ → Hryvnia
+```
 
 ## 8-Series Fonts
 Suitable when using the full height of an 8-row matrix - contains the entire Latin-1 character set and a bunch of currency characters
