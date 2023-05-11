@@ -97,7 +97,7 @@ The numbers have been shaved and stylized
 
 [Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/darkpoet78/MatrixClockFonts/blob/main/6-series/MatrixClock-Light6.bdf)
 
-## Note regarding EspHoMaTriXv2's ability to use2 Fonts
+## EspHoMaTriXv2 & 2 Fonts
 
 Here are some snippets to show how to use a 6-series font to display the time and an 8-series font to display other screens.
 ```
