@@ -97,6 +97,32 @@ The numbers have been shaved and stylized
 
 [Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/darkpoet78/MatrixClockFonts/blob/main/6-series/MatrixClock-Light6.bdf)
 
+## Note regarding EspHoMaTriXv2's ability to use2 Fonts
+
+Here are some snippets to show how to use a 6-series font to display the time and an 8-series font to display other screens.
+```
+font:
+  - file: ehmtx/MatrixClock-Chunky6.bdf
+    id: special_font
+    #size: 16
+    glyphs:  |
+      ! "#$%&'()*+,-./0123456789:APMTapmt
+  - file: ehmtx/MatrixClock-Light8.bdf
+    id: default_font
+    #size: 16
+    glyphs:  |
+      ! "#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz°
+```
+Font offsets are needed to make sure the font (especially the 8-series) displays correctly.
+```
+ehmtxv2:
+  show_seconds: false
+  default_font_id: default_font
+  default_font_yoffset: 8
+  special_font_id: special_font
+  special_font_yoffset: 6
+```
+
 ## Authorship
 
 ### The following notice applies to the 6-series fonts
