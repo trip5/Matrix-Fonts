@@ -25,7 +25,7 @@ Add any needed characters from this:
 {|}~¡¢£¤¥¦§¨©ª«¬®¯±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ
 ```
 #### Extra characters
-Any characters included in the glyphs list that are not actually in the font will cause ESPHome to error when compiling. This appears to be a flaw in Pillow, a python dependency that converts fonts. Pillow interprets all BDF fonts as being in the Latin-1 codepage. Any attempts I made to force it into recognizing other encoding (like UTF-8) failed. The full unicode BDF files are still in the folders, if you wish to also give it an attempt.
+Any characters included in the glyphs list that are not actually in the font will cause ESPHome to error when compiling. This appears to be a flaw in Pillow, a python dependency that converts fonts. Pillow interprets all BDF fonts as being in the Latin-1 codepage. Any attempts I made to force it into recognizing other encoding (like UTF-8) failed. The full unicode BDF files are still in the folders, if you wish to also give it an attempt.  That said, I have included my "full" Unicode fonts as well as ZIP files of Fontforge's working SFDIR folders should you wish to add characters.
 
 Because of this flaw, I made a few "useless" characters look like something else. You can use these special characters in Home Assistant:
 ```
