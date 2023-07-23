@@ -2,7 +2,7 @@
 Fonts to be used with LED Matrix Clocks
 
 ## About these fonts
-These fonts are designed strictly with LED Matrix Clocks in mind, especially a unit that uses [EsphoMaTrixv2](https://github.com/lubeda/EspHoMaTriXv2/). They are BDF Fonts, so they can be directly implemented with ESPHome (and perhaps Arduino).
+These fonts are designed strictly with LED Matrix Clocks in mind, especially a unit that uses [EspHoMaTriXv2](https://github.com/lubeda/EspHoMaTriXv2/). They are BDF Fonts, so they can be directly implemented with ESPHome (and perhaps Arduino).
 
 Because BDF fonts are bitmap fonts, the size of these fonts is pixel-fixed. They are not resizable like TTF fonts. This is a good thing.
 
@@ -14,7 +14,7 @@ Fonts will be added as I continue work on this project.
 To reduce the space that the font takes up during the compile please use code as such:
 ```
 font: 
-  - file: ehmtx/MatrixClock-LightLetters6.bdf
+  - file: ehmtx/MatrixClock-Light6.bdf
     id: ehmtx_font
     glyphs:  |
       ! "#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz°
@@ -41,7 +41,7 @@ Because of this flaw, I made a few "useless" characters look like something else
 ## 8-Series Fonts
 Suitable when using the full height of an 8-row matrix - contains the entire Latin-1 character set and a bunch of currency characters
 
-When using EsphoMaTrix, check that this is in your yaml (probably):
+When using EspHoMaTriX, check that this is in your yaml (probably):
 ```
 ehmtx:
   show_dow: false
@@ -56,7 +56,7 @@ Everything big and blocky
 [Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/darkpoet78/MatrixClockFonts/blob/main/8-series/MatrixClock-Chunky8.bdf)
 
 ### MatrixClock-Chunky8X
-Instead of tails, the characters will take up the full 8 pixels
+Instead of tails, the characters will take up the full 8 pixel height
 ![image](./8-series/MatrixClock-Chunky8X.png)
 
 [Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/darkpoet78/MatrixClockFonts/blob/main/8-series/MatrixClock-Chunky8X.bdf)
