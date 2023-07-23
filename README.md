@@ -4,7 +4,7 @@ Fonts to be used with LED Matrix Clocks
 ## About these fonts
 These fonts are designed strictly with LED Matrix Clocks in mind, especially a unit that uses [EsphoMaTrixv2](https://github.com/lubeda/EspHoMaTriXv2/). They are BDF Fonts, so they can be directly implemented with ESPHome (and perhaps Arduino).
 
-Because BDF fonts are bitmap fonts, the size of these fonts is pixel-fixed. They are not resizable like TTF fonts.
+Because BDF fonts are bitmap fonts, the size of these fonts is pixel-fixed. They are not resizable like TTF fonts. This is a good thing.
 
 Most characters will be 3 pixels wide, but certain characters like G and M and & are wider. Punctuation characters are generally 1 or 2 pixels wide.  All characters have 1 empty column on the right side... except the space itself, which is only 1 column wide. This should help when you need a bit of space between characters but don't want to lose 4-5 columns of pixels while doing so!
 
@@ -25,7 +25,7 @@ Add any needed characters from this:
 {|}~¡¢£¤¥¦§¨©ª«¬®¯±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ
 ```
 #### Extra characters
-Any characters included in the glyphs list that are not actually in the font will cause ESPHome to error when compiling. This appears to be a flaw in Pillow, a python dependency that converts fonts. Pillow interprets all BDF fonts as being in the Latin-1 codepage. Any attempts I made to force it into recognizing other encoding (like UTF-8) failed. The full unicode BDF files are still in the files, if you wish to also give it an attempt.  That said, I have included my "full" Unicode fonts as well as ZIP files of Fontforge's working SFDIR folders should you wish to add characters.
+Any characters included in the glyphs list that are not actually in the font will cause ESPHome to error when compiling. This appears to be a flaw in Pillow, a python dependency that converts fonts. The version of Pillow included with ESPHome 2023.7.0 (and earlier) interprets all BDF fonts as being in the Latin-1 codepage. Any attempts I made to force it into recognizing other encoding (like UTF-8) failed. The full unicode BDF files are still in the files, if you wish to also give it an attempt.  That said, there appears to be a fix in the dev version so support for Unicode should be coming...
 
 Because of this flaw, I made a few "useless" characters look like something else. You can use these special characters in Home Assistant:
 ```
@@ -55,24 +55,30 @@ Everything big and blocky
 
 [Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/darkpoet78/MatrixClockFonts/blob/main/8-series/MatrixClock-Chunky8.bdf)
 
-### MatrixClock-LightLetters8
-Most characters have been lightened a bit but the numbers are still chunky
+### MatrixClock-Chunky8X
+Instead of tails, the characters will take up the full 8 pixels
+![image](./8-series/MatrixClock-Chunky8X.png)
 
-![image](./8-series/MatrixClock-LightLetters8.png)
-
-[Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/darkpoet78/MatrixClockFonts/blob/main/8-series/MatrixClock-LightLetters8.bdf)
+[Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/darkpoet78/MatrixClockFonts/blob/main/8-series/MatrixClock-Chunky8X.bdf)
 
 ### MatrixClock-Light8
-The numbers have been shaved and stylized
+Most characters have been lightened and shaved a bit
 
 ![image](./8-series/MatrixClock-Light8.png)
 
 [Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/darkpoet78/MatrixClockFonts/blob/main/8-series/MatrixClock-Light8.bdf)
 
+### MatrixClock-Light8X
+The characters will take up the full 8 pixels - this one looks really good on info screens
+
+![image](./8-series/MatrixClock-Light8X.png)
+
+[Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/darkpoet78/MatrixClockFonts/blob/main/8-series/MatrixClock-Light8X.bdf)
+
 ## 6-Series Fonts
 Suitable when using a weekday band underneath the time on an 8-row matrix
 
-Sorry to the European languages but accents on letters only 5 pixels tall are terrible. I'll convert these to at least include the encoding in the near future, even if those chracters don't actually have any accents in the glyph itself.
+Sorry to the European languages but accents on letters only 5 pixels tall are terrible. These are pretty much only useful for displaying the time and having the weekdays underneath.
 
 For now, the included characters match what are in the thumbnails. Many have been omitted.
 
