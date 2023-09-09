@@ -55,11 +55,51 @@ Everything big and blocky
 
 [Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/darkpoet78/MatrixClockFonts/blob/main/8-series/MatrixClock-Chunky8.bdf)
 
+If you want the old super-narrow one ![image](./8-series/MatrixClock-Chunky8-old1.png), edit the Chunky8.bdf file with a text editor and find 'STARTCHAR one' and replace the entry with:
+
+````
+STARTCHAR one
+ENCODING 49
+SWIDTH 250 0
+DWIDTH 2 0
+BBX 1 7 0 0
+BITMAP
+80
+80
+80
+80
+80
+80
+80
+ENDCHAR
+````
+
+
 ### MatrixClock-Chunky8X
 Instead of tails, the characters will take up the full 8 pixel height
 ![image](./8-series/MatrixClock-Chunky8X.png)
 
 [Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/darkpoet78/MatrixClockFonts/blob/main/8-series/MatrixClock-Chunky8X.bdf)
+
+If you want the old super-narrow one ![image](./8-series/MatrixClock-Chunky8X-old1.png), edit the Chunky8X.bdf file with a text editor and find 'STARTCHAR one' and replace the entry with:
+
+````
+STARTCHAR one
+ENCODING 49
+SWIDTH 250 0
+DWIDTH 2 0
+BBX 1 8 0 -1
+BITMAP
+80
+80
+80
+80
+80
+80
+80
+80
+ENDCHAR
+````
 
 ### MatrixClock-Light8
 Most characters have been lightened and shaved a bit
@@ -103,7 +143,7 @@ The numbers have been shaved and stylized
 
 [Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/darkpoet78/MatrixClockFonts/blob/main/6-series/MatrixClock-Light6.bdf)
 
-## EspHoMaTriXv2 & 2 Fonts
+## EspHoMaTriXv2 Fonts
 
 Here are some snippets to show how to use a 6-series font to display the time and an 8-series font to display other screens.
 ```
