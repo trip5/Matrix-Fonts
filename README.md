@@ -55,51 +55,11 @@ Everything big and blocky
 
 [Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/darkpoet78/MatrixClockFonts/blob/main/8-series/MatrixClock-Chunky8.bdf)
 
-If you want the old super-narrow one ![image](./8-series/MatrixClock-Chunky8-old1.png), edit the Chunky8.bdf file with a text editor and find 'STARTCHAR one' and replace the entry with:
-
-````
-STARTCHAR one
-ENCODING 49
-SWIDTH 250 0
-DWIDTH 2 0
-BBX 1 7 0 0
-BITMAP
-80
-80
-80
-80
-80
-80
-80
-ENDCHAR
-````
-
-
 ### MatrixClock-Chunky8X
 Instead of tails, the characters will take up the full 8 pixel height
 ![image](./8-series/MatrixClock-Chunky8X.png)
 
 [Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/darkpoet78/MatrixClockFonts/blob/main/8-series/MatrixClock-Chunky8X.bdf)
-
-If you want the old super-narrow one ![image](./8-series/MatrixClock-Chunky8X-old1.png), edit the Chunky8X.bdf file with a text editor and find 'STARTCHAR one' and replace the entry with:
-
-````
-STARTCHAR one
-ENCODING 49
-SWIDTH 250 0
-DWIDTH 2 0
-BBX 1 8 0 -1
-BITMAP
-80
-80
-80
-80
-80
-80
-80
-80
-ENDCHAR
-````
 
 ### MatrixClock-Light8
 Most characters have been lightened and shaved a bit
@@ -142,6 +102,69 @@ The numbers have been shaved and stylized
 ![image](./6-series/MatrixClock-Light6.png)
 
 [Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/darkpoet78/MatrixClockFonts/blob/main/6-series/MatrixClock-Light6.bdf)
+
+## Regarding the '1' character:
+
+In the Chunky fonts, all numbers are the same width but it is possible to use a narrow-width one.  If you wish to replace the wide '1' with a more slim one, instructions are below.
+
+### Chunky8
+
+If you want the narrow one ![image](./8-series/MatrixClock-Chunky8-old1.png), edit the Chunky8.bdf file with a text editor and find 'STARTCHAR one' and replace the entry with:
+````
+STARTCHAR one
+ENCODING 49
+SWIDTH 250 0
+DWIDTH 2 0
+BBX 1 7 0 0
+BITMAP
+80
+80
+80
+80
+80
+80
+80
+ENDCHAR
+````
+
+### Chunky8X
+
+If you want the narrow one ![image](./8-series/MatrixClock-Chunky8X-old1.png), edit the Chunky8X.bdf file with a text editor and find 'STARTCHAR one' and replace the entry with:
+````
+STARTCHAR one
+ENCODING 49
+SWIDTH 250 0
+DWIDTH 2 0
+BBX 1 8 0 -1
+BITMAP
+80
+80
+80
+80
+80
+80
+80
+80
+ENDCHAR
+````
+
+### Chunky6 or LightLetters6
+
+If you want the narrow one ![image](./6-series/MatrixClock-Chunky6-old1.png), edit the Chunky6.bdf or LightLetters6.bdf file with a text editor and find 'STARTCHAR one' and replace the entry with:
+````
+STARTCHAR one
+ENCODING 49
+SWIDTH 333 0
+DWIDTH 2 0
+BBX 1 5 0 0
+BITMAP
+80
+80
+80
+80
+80
+ENDCHAR
+````
 
 ## EspHoMaTriXv2 Fonts
 
