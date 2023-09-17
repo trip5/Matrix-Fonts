@@ -56,7 +56,8 @@ Everything big and blocky
 [Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/darkpoet78/MatrixClockFonts/blob/main/8-series/MatrixClock-Chunky8.bdf)
 
 ### MatrixClock-Chunky8X
-Instead of tails, the characters will take up the full 8 pixel height
+The bottom row of pixels is usally reserved for tails but here every character has been stretched out to use that row - this one is my personal favorite!
+
 ![image](./8-series/MatrixClock-Chunky8X.png)
 
 [Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/darkpoet78/MatrixClockFonts/blob/main/8-series/MatrixClock-Chunky8X.bdf)
@@ -69,7 +70,7 @@ Most characters have been lightened and shaved a bit
 [Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/darkpoet78/MatrixClockFonts/blob/main/8-series/MatrixClock-Light8.bdf)
 
 ### MatrixClock-Light8X
-The characters will take up the full 8 pixels - this one looks really good on info screens
+All Characters will take up the full 8 rows of pixels - this one looks really good on info screens!
 
 ![image](./8-series/MatrixClock-Light8X.png)
 
@@ -78,9 +79,7 @@ The characters will take up the full 8 pixels - this one looks really good on in
 ## 6-Series Fonts
 Suitable when using a weekday band underneath the time on an 8-row matrix
 
-Sorry to the European languages but accents on letters only 5 pixels tall are terrible. These are pretty much only useful for displaying the time and having the weekdays underneath.
-
-For now, the included characters match what are in the thumbnails. Many have been omitted.
+I've updated the font files to contain the same characters as the 8-series but accents on letters only 5 or 6 pixels tall are mostly terrible.
 
 ### MatrixClock-Chunky6
 Everything big and blocky
@@ -89,12 +88,12 @@ Everything big and blocky
 
 [Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/darkpoet78/MatrixClockFonts/blob/main/6-series/MatrixClock-Chunky6.bdf)
 
-### MatrixClock-LightLetters6
-Most characters have been lightened a bit but the numbers are still chunky
+### MatrixClock-Chunky6X
+Instead of tails, the characters will take up a full 6 rows of pixels
 
-![image](./6-series/MatrixClock-LightLetters6.png)
+![image](./6-series/MatrixClock-Chunky6X.png)
 
-[Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/darkpoet78/MatrixClockFonts/blob/main/6-series/MatrixClock-LightLetters6.bdf)
+[Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/darkpoet78/MatrixClockFonts/blob/main/6-series/MatrixClock-Chunky6X.bdf)
 
 ### MatrixClock-Light6
 The numbers have been shaved and stylized
@@ -103,13 +102,20 @@ The numbers have been shaved and stylized
 
 [Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/darkpoet78/MatrixClockFonts/blob/main/6-series/MatrixClock-Light6.bdf)
 
+### MatrixClock-Light6X
+Full 6 rows of pixels
+
+![image](./6-series/MatrixClock-Light6X.png)
+
+[Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/darkpoet78/MatrixClockFonts/blob/main/6-series/MatrixClock-Light6X.bdf)
+
 ## Regarding the '1' character:
 
-In the Chunky fonts, all numbers are the same width but it is possible to use a narrow-width one.  If you wish to replace the wide '1' with a more slim one, instructions are below.
+In the Chunky fonts, all numbers are the same width but it is possible to use a narrow-width '1'.  Instructions are below.
 
 ### Chunky8
 
-If you want the narrow one ![image](./8-series/MatrixClock-Chunky8-old1.png), edit the Chunky8.bdf file with a text editor and find 'STARTCHAR one' and replace the entry with:
+If you want the narrow '1' ![image](./8-series/MatrixClock-Chunky8-old1.png), edit the Chunky8.bdf file with a text editor and find 'STARTCHAR one' and replace the entry with:
 ````
 STARTCHAR one
 ENCODING 49
@@ -126,10 +132,9 @@ BITMAP
 80
 ENDCHAR
 ````
-
 ### Chunky8X
 
-If you want the narrow one ![image](./8-series/MatrixClock-Chunky8X-old1.png), edit the Chunky8X.bdf file with a text editor and find 'STARTCHAR one' and replace the entry with:
+If you want the narrow '1' ![image](./8-series/MatrixClock-Chunky8X-old1.png), edit the Chunky8X.bdf file with a text editor and find 'STARTCHAR one' and replace the entry with:
 ````
 STARTCHAR one
 ENCODING 49
@@ -147,24 +152,9 @@ BITMAP
 80
 ENDCHAR
 ````
+### Replacing other characters
 
-### Chunky6 or LightLetters6
-
-If you want the narrow one ![image](./6-series/MatrixClock-Chunky6-old1.png), edit the Chunky6.bdf or LightLetters6.bdf file with a text editor and find 'STARTCHAR one' and replace the entry with:
-````
-STARTCHAR one
-ENCODING 49
-SWIDTH 333 0
-DWIDTH 2 0
-BBX 1 5 0 0
-BITMAP
-80
-80
-80
-80
-80
-ENDCHAR
-````
+Notice the pattern above?  A lot of characters can be swapped between files in this way!  Prefer the Light letters but chunky numbers?  Use  text editor and replace the entries!
 
 ## EspHoMaTriXv2 Fonts
 
@@ -192,45 +182,10 @@ ehmtxv2:
   special_font_yoffset: 6
 ```
 
-## Authorship
+## Editing or Contributing
 
-### The following notice applies to the 6-series fonts
+Check out FontForge: https://fontforge.org/en-US/
 
-```
-** The original 3x5 font is licensed under the 3-clause BSD license:
-**
-** Copyright 1999 Brian J. Swetland
-** Copyright 1999 Vassilii Khachaturov
-** Portions (of vt100.c/vt100.h) copyright Dan Marks
-**
-** All rights reserved.
-**
-** Redistribution and use in source and binary forms, with or without
-** modification, are permitted provided that the following conditions
-** are met:
-** 1. Redistributions of source code must retain the above copyright
-**    notice, this list of conditions, and the following disclaimer.
-** 2. Redistributions in binary form must reproduce the above copyright
-**    notice, this list of conditions, and the following disclaimer in the
-**    documentation and/or other materials provided with the distribution.
-** 3. The name of the authors may not be used to endorse or promote products
-**    derived from this software without specific prior written permission.
-**
-** THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
-** IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
-** OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
-** IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
-** INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
-** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-** DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-** THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-** (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
-** THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-```
-Modifications to Tom Thumb for improved readability are from Robey Pointer, see this page for the BDF file which I used as a base:  http://robey.lag.net/2010/01/23/tiny-monospace-font.html
+## An older fixed-width BDF font which served as initial inspiration:
 
-The original author does not have any objection to relicensing of Robey Pointer's modifications (in this file) in a more permissive license.  See the discussion at the above blog, and also here: http://opengameart.org/forumtopic/how-to-submit-art-using-the-3-clause-bsd-license
-
-### The following notice applies to all fonts
-
-All of these fonts are released under the CC-BY License: https://creativecommons.org/licenses/by/4.0/
+At first, I used Tom Thumb as a base. There may be still be some resemblance but pretty sure that's just because there's only so much you can do with such limited pixels.  Nevertheless, if you're interested, you can check out that font here: https://robey.lag.net/2010/01/23/tiny-monospace-font.html
