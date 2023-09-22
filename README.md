@@ -2,7 +2,7 @@
 Fonts to be used with LED Matrix Clocks and other LED Matrix projects
 
 ## About these fonts
-These fonts are designed with LED Matrix Clocks in mind, especially a unit that uses [`EspHoMaTriXv2`](https://github.com/lubeda/EspHoMaTriXv2/). They are BDF and TTF Fonts, so they can be directly implemented with ESPHome (and perhaps Arduino).
+These fonts are designed with LED Matrix Clocks in mind, especially a unit that uses [`EspHoMaTriXv2`](https://github.com/lubeda/EspHoMaTriXv2/) or [`EspHome-Led-PixelClock`](https://github.com/trip5/EspHome-Led-PixelClock/). They are BDF and TTF Fonts, so they can be directly implemented with ESPHome (and perhaps Arduino).
 
 Because these are bitmap fonts, the size of these fonts is pixel-fixed. They are not resizable. This is a good thing.
 
@@ -158,6 +158,6 @@ ehmtxv2:
 
 Check out FontForge: https://fontforge.org/en-US/
 
-## An older fixed-width BDF font which served as initial inspiration:
+### Inspiration
 
 Originally, I used Tom Thumb as a base. There may be still be some resemblance but that's just because there's only so much you can do with such limited pixels.  Nevertheless, if you're interested, you can check out that font here: https://robey.lag.net/2010/01/23/tiny-monospace-font.html
