@@ -1,7 +1,7 @@
 # Matrix Fonts
 Fonts to be used with LED Matrix Clocks and other LED Matrix projects
 
-## About these fonts
+## About These Fonts
 These fonts are designed with LED Matrix Clocks in mind, especially a unit that uses [`EspHoMaTriXv2`](https://github.com/lubeda/EspHoMaTriXv2/) or [`EspHome-Led-PixelClock`](https://github.com/trip5/EspHome-Led-PixelClock/). They are BDF and TTF Fonts, so they can be directly implemented with ESPHome (and perhaps Arduino).
 
 Because these are bitmap fonts, the size of these fonts is pixel-fixed. They are not resizable. This is a good thing.
@@ -10,59 +10,8 @@ Most characters will be 3 pixels wide, but certain characters like G and M and &
 
 I will continue adding characters to fonts as I have time. If you wish your language to be a priority, open an issue and I'll see what I can do.
 
-### Using these fonts
-To reduce the space that the font takes up during the compile please use code as such:
-```
-font: 
-  - file: ehmtx/MatrixLight6.bdf
-    id: ehmtx_font
-    glyphs:  |
-      ! "#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz°
-```
-
-Add any needed characters from this (this list seems valid for BDF files):
-```
-{|}~¡¢£¤¥¦§¨©ª«¬®¯±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ
-```
-Of course, you can also add characters not in the above list but visible in the graphics below.
-
-### Characters
-Any characters included in the glyphs list that are not actually in the font will cause ESPHome to error when compiling.
-
-Also note that there is a limit of 256 characters that can be used. This is a hard limit set by Pillow, a python dependency that converts fonts to bitmaps usable by ESPHome. If your glyphs list is longer, any characters beyond that limit will simply not be displayed.
-
-### Unicode Characters
-```
-UnicodeEncodeError: 'latin-1' codec can't encode character '\u0416' in position 0: ordinal not in range(256)
-``````
-
-This error has to do with the way that Pillow interprets a BDF font file as being in the Latin-1 codepage if the character list doesn't match what it expects. Since that part of Pillow is quite old, there seems to be no interest in fixing it to match UTF standards. So, if you wish to use Unicode characters, you must use a TTF file instead.
-
-These TTF files are not usable by Windows, since they include only bitmaps. They are also not very useful when editing the font. So the BDF files will always be considered as master files.
-
-
-### Character Substitutions
-Because of the BDF-Pillow flaw, I made a few "useless" characters look like something else. You can still use a BDF file if you use these special characters in the glyphs list and in Home Assistant:
-```
-¨ → Bitcoin
-¸ → Ethereum
-¬ → Degree C
-¯ → Degree F
-¼ → Euro
-½ → Won
-¾ → Hryvnia
-```
-
-
 ## 8-Series Fonts
 Suitable when using the full height of an 8-row matrix - contains the entire Latin-1 character set and a bunch of currency characters
-
-When using EspHoMaTriX, check that this is in your yaml (probably):
-```
-ehmtx:
-  show_dow: false
-  yoffset: 8
-```
 
 ### MatrixChunky8
 Everything big and blocky
@@ -127,23 +76,61 @@ These characters will take up a full 6 rows of pixels
 
 [ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixLight6X.bdf) | [TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixLight6X.ttf) ]
 
-## EspHoMaTriXv2 Fonts
+## Using These Fonts
 
-Here are some snippets to show how to use a 6-series font to display the time and an 8-series font to display other screens.
+### In ESPHome
+To reduce the space that the font takes up during the compile please use code as such:
 ```
-font:
-  - file: ehmtx/MatrixChunky6.bdf
+font: 
+  - file: fonts/MatrixLight6.bdf
     id: special_font
-    #size: 16
-    glyphs:  |
-      ! "#$%&'()*+,-./0123456789:APMTapmt
-  - file: ehmtx/MatrixLight8.bdf
-    id: default_font
-    #size: 16
     glyphs:  |
       ! "#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz°
 ```
-Font offsets are needed to make sure the font (especially the 8-series) displays correctly. Also, the special font will display the time.
+
+If using a TTF file, you must specify the font size:
+```
+font: 
+  - file: fonts/MatrixLight8.ttf
+    id: default_font
+    glyphs:  |
+      ! "#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz°
+    size: 8
+```
+
+Add any needed characters from this (this list seems valid for BDF files):
+```
+{|}~¡¢£¤¥¦§¨©ª«¬®¯±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ
+```
+Of course, you can also add characters not in the above list but visible in the graphics below.
+
+#### Characters
+Any characters included in the glyphs list that are not actually in the font will cause ESPHome to error when compiling.
+
+Also note that there is a limit of 256 characters that can be used. This is a hard limit set by Pillow, a python dependency that converts fonts to bitmaps usable by ESPHome. If your glyphs list is longer, any characters beyond that limit will simply not be displayed.
+
+#### Unicode Character Error
+```
+UnicodeEncodeError: 'latin-1' codec can't encode character '\u0416' in position 0: ordinal not in range(256)
+``````
+
+This error has to do with the way that Pillow interprets a BDF font file as being in the Latin-1 codepage if the character list doesn't match what it expects. Since that part of Pillow is quite old, there seems to be no interest in fixing it to match UTF standards. So, if you wish to use Unicode characters, you must use a TTF file instead.
+
+These TTF files are not usable by Windows, since they include only bitmaps. They are also not very useful when editing the font. So the BDF files will always be considered as master files.
+
+#### Character Substitutions
+Because of the BDF-Pillow flaw, I made a few "useless" characters look like something else. You can still use a BDF file if you use these special characters in the glyphs list and in Home Assistant:
+```
+¨ → Bitcoin
+¸ → Ethereum
+¬ → Degree C
+¯ → Degree F
+¼ → Euro
+½ → Won
+¾ → Hryvnia
+```
+### EspHoMaTriXv2
+When using EspHoMaTriX, check that this is in your yaml (edit as needed):
 ```
 ehmtxv2:
   show_seconds: false
@@ -153,6 +140,8 @@ ehmtxv2:
   special_font_yoffset: 6
   default_clock_font: false
 ```
+
+Please note that yoffset can be tricky.  BDF files can match the number of the series without any issue.  TTF files in the X series, same.  The other TTF files (without the X), you should subtract 1 from the offset to allow room for the tails... for now.  I'll probably just get rid of anything below the baseline in the future.
 
 ## Editing or Contributing
 
