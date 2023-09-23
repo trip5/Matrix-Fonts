@@ -48,6 +48,8 @@ Suitable when using a weekday band underneath the time on an 8-row matrix
 
 I've updated the font files to contain the same characters as the 8-series. A lot of accented characters in the non-X fonts were pushed below the baseline to make them look slightly less terrible.
 
+Cyrillic will be added to this set... soonish.
+
 ### MatrixChunky6
 Everything big and blocky
 
@@ -98,11 +100,15 @@ font:
     size: 8
 ```
 
-Add any needed characters from this (this list seems valid for BDF files):
+Add any needed Latin characters from this (this list seems valid for BDF files):
 ```
 {|}~¡¢£¤¥¦§¨©ª«¬®¯±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ
 ```
-Of course, you can also add characters not in the above list but visible in the graphics below.
+Add any needed Cyrillic characters from this (you must use the TTF):
+```
+АаБбВвГгҐґДдЕеЄєЖжЗзИиІіЇїЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЬьЮюЯя
+```
+Of course, you can also add characters not in the above list but visible in the graphic preview.
 
 #### Characters
 Any characters included in the glyphs list that are not actually in the font will cause ESPHome to error when compiling.
@@ -141,12 +147,15 @@ ehmtxv2:
   default_clock_font: false
 ```
 
-Please note that yoffset can be tricky.  BDF files can match the number of the series without any issue.  TTF files in the X series, same.  The other TTF files (without the X), you should subtract 1 from the offset to allow room for the tails... for now.  I'll probably just get rid of anything below the baseline in the future.
+Please note that yoffset can be tricky.  You should use a number that corresponds with the baseline of the font. For these fonts, there is actually nothing below the font baseline; I've designed the fonts so the non-X fonts are actually raised 1 pixel above the baseline so the tails appear correctly.
 
 ## Editing or Contributing
 
 Check out FontForge: https://fontforge.org/en-US/
 
+### Thanks to...
+[`Andrew J.Swan`](https://github.com/andrewjswan) for huge help with Cyrillic characters
+
 ### Inspiration
 
-Originally, I used Tom Thumb as a base. There may be still be some resemblance but that's just because there's only so much you can do with such limited pixels.  Nevertheless, if you're interested, you can check out that font here: https://robey.lag.net/2010/01/23/tiny-monospace-font.html
+Originally, I used Tom Thumb as a base. There may be still be some resemblance but that's just because there's only so much you can do with such limited pixels.  Nevertheless, if you're interested in a 4x6 (3x5 useable) monospaced font you can [click here](https://robey.lag.net/2010/01/23/tiny-monospace-font.html).
