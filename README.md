@@ -8,10 +8,10 @@ Because these are bitmap fonts, the size of these fonts is pixel-fixed. They are
 
 Most characters will be 3 pixels wide, but certain characters like G and M and & are wider. Punctuation characters are generally 1 or 2 pixels wide.  All characters have 1 empty column on the right side... except the space itself, which is only 1 column wide. This should help when you need a bit of space between characters but don't want to lose 4-5 columns of pixels while doing so!
 
-I will continue adding characters to fonts as I have time. If you wish your language to be a priority, open an issue and I'll see what I can do.
+I will continue adding characters to fonts as I have time. If you wish your language to be a priority or if you need some certain characters added, open an issue and I'll see what I can do.
 
 ## 8-Series Fonts
-Suitable when using the full height of an 8-row matrix - contains the entire Latin-1 character set and a bunch of currency characters
+Suitable when using the full height of an 8-row matrix - contains the entire Latin-1 character set, Cyrillic, and a bunch of currency characters
 
 ### MatrixChunky8
 Everything big and blocky
