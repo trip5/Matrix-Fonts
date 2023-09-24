@@ -1,7 +1,7 @@
-name: Other
-description: Having a problem that isn't in the other options? Or just adding some comment?
+name: "Other"
+description: "Having a problem that isn't in the other options? Or just making a comment?"
 title: "[Issue] <title>"
-labels: labels: ["positive vibes", "other issue"]
+labels: ["positive vibes", "other issue"]
 assignees:
   - trip5
 body:

@@ -1,5 +1,5 @@
-name: Character Problem
-description: Request a certain character be fixed
+name: "Character Problem"
+description: "Request a certain character be fixed"
 title: "[Character Problem] <title>"
 labels: ["character problem"]
 assignees:

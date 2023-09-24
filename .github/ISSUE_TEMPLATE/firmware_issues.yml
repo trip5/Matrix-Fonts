@@ -1,7 +1,7 @@
-name: Firmware Issue
-description: Having a problem with either ESPHome, EspHoMaTriX, or some other firmware (Arduino, etc.)
+name: "Firmware Issue"
+description: "Having a problem with either ESPHome, EspHoMaTriX, or some other firmware (Arduino, etc.)"
 title: "[Firmware Issue] <title>"
-labels: labels: ["ESPHome", "ehmtx", "other firmware"]
+labels: ["ESPHome", "ehmtx", "other firmware"]
 assignees:
   - trip5
 body:

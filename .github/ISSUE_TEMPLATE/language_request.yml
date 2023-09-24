@@ -1,5 +1,5 @@
-name: Language Request
-description: Request a new language be added
+name: "Language Request"
+description: "Request a new language be added"
 title: "[Language Request] <title>"
 labels: ["language request"]
 assignees:
