@@ -1,4 +1,4 @@
-name: "Firmware Issue"
+name: "Firmware Issue Other"
 description: "Having a problem with some other firmware (Arduino, etc.)?"
 title: "[Firmware Issue] <title>"
 labels: ["other firmware"]

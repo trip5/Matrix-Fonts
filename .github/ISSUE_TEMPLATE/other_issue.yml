@@ -1,4 +1,4 @@
-name: "Other"
+name: "Other Issue"
 description: "Having a problem that isn't in the other options?"
 title: "[Issue] <title>"
 labels: ["other issue"]

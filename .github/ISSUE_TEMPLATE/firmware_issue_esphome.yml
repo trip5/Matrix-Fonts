@@ -1,4 +1,4 @@
-name: "Firmware Issue"
+name: "Firmware Issue ESPHome"
 description: "Having a problem with ESPHome?"
 title: "[Firmware Issue] <title>"
 labels: ["ESPHome"]
