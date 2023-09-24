@@ -108,7 +108,7 @@ Add any needed Cyrillic characters from this (you must use the TTF):
 ```
 АаБбВвГгҐґДдЕеЄєЖжЗзИиІіЇїЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЬьЮюЯя
 ```
-Of course, you can also add characters not in the above list but visible in the graphic preview.
+Of course, you can also add characters not in the above lists but visible in the graphic preview.
 
 #### Characters
 Any characters included in the glyphs list that are not actually in the font will cause ESPHome to error when compiling.
