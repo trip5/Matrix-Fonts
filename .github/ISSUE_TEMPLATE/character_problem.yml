@@ -10,7 +10,8 @@ body:
       value: |
         Thanks for taking the time to give feedback!
         
-        If you can, submit a pixel pic to be more precise: [`Pixel Editor`] (https://pixieengine.com/pixel-editor) is good.  Then attach a picture to your report.
+        If you can, submit a pixel pic to be more precise: [`Pixel Creator`](https://pixelit.bastelbunker.de/PixelCreator#/) for a simple 8x8 or
+        [`Pixel Editor`] (https://pixieengine.com/pixel-editor) for something bigger.  Take a screenshot, attach to your report.
   - type: textarea
     id: info
     attributes:
