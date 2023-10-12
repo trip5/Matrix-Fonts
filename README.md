@@ -115,19 +115,19 @@ font:
 ```
 
 ##### Character Substitutions in Latin Extended-A
-Because of the BDF-Pillow flaw (see below), I made a few "useless" characters in the Latin Extended-A look like something else. You can still use a BDF file if you use these special characters in the glyphs list and in Home Assistant:
+Because of the BDF-Pillow flaw (see below), I made a few "useless" characters in the Latin Extended-A look like something else. You can still use a BDF file if you use these special characters in the glyphs list and in Home Assistant.
 ```
 ¨¬¯¸¼½¾
 ```
-| Character | Appears As |
-| --------- | ---------- |
-| `¨`       | ₿ Bitcoin  |
-| `¸`       | Ξ Ethereum |
+| Character | Appears As  |
+| --------- | ----------- |
+| `¨`       | ₿ Bitcoin   |
+| `¸`       | Ξ Ethereum  |
 | `¬`       | ℃ Degree C |
 | `¯`       | ℉ Degree F |
-| `¼`       | € Euro     |
-| `½`       | ₩ Won      |
-| `¾`       | ₴ Hryvnia  |
+| `¼`       | € Euro      |
+| `½`       | ₩ Won       |
+| `¾`       | ₴ Hryvnia   |
 
 ### Unicode
 
@@ -138,9 +138,14 @@ Because of the BDF-Pillow flaw (see below), I made a few "useless" characters in
 ```
 
 
-#### Cyrillic (not available in 6-Series Fonts yet)
+#### Cyrillic * not available in 6-Series Fonts yet
 ```
 АаБбВвГгҐґДдЕеЄєЖжЗзИиІіЇїЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЬьЮюЯя
+```
+
+#### Korean (only useful for time, date display) * not available in 6-Series Fonts yet
+```
+오후전일월화수목금토
 ```
 
 #### General Punctuation
@@ -157,6 +162,28 @@ The regular space (as available on most keyboards) is 2 pixels wide. Here are so
 | ` `     | Thin Space | U+2009  | 1 pixel  |
 | ` `     | En Space   | U+2002  | 3 pixels |
 | ` `     | Em Space   | U+2003  | 4 pixels |
+
+##### Pixel Spaces (that can be used as characters) * not available in 6-Series Fonts yet
+In case those spaces are no use to you (they're invisible and ESPHome will likely treat them as spaces), here are some other available spaces using the Unicode encircled number set.
+
+```
+⓪①②③④⑤⑥⑦⑧⑨⑩
+```
+
+| Space   | Name       | Unicode | Space Width |
+| ------- | ---------- | ------- |------------ |
+| `⓪`     | Circled 0  | U+24EA  | 0 pixels    |
+| `①`     | Circled 1  | U+2460  | 1 pixel     |
+| `②`     | Circled 2  | U+2461  | 2 pixels    |
+| `③`     | Circled 3  | U+2462  | 3 pixels    |
+| `④`     | Circled 4  | U+2463  | 4 pixels    |
+| `⑤`     | Circled 5  | U+2464  | 5 pixels    |
+| `⑥`     | Circled 6  | U+2465  | 6 pixels    |
+| `⑦`     | Circled 7  | U+2466  | 7 pixels    |
+| `⑧`     | Circled 8  | U+2467  | 8 pixels    |
+| `⑨`     | Circled 9  | U+2468  | 9 pixels    |
+| `⑩`     | Circled 10 | U+2469  | 10 pixels   |
+
 
 ##### Other Punctuation Marks
 The regular hypen-minus (as available on most keyboards) is 3 pixels wide plus a space.  Here are some other available punctuations.
@@ -202,12 +229,10 @@ These TTF files are not usable by Windows, since they include only bitmaps. They
 When using EspHoMaTriX, check that this is in your yaml (edit as needed):
 ```
 ehmtxv2:
-  show_seconds: false
   default_font_id: default_font
   default_font_yoffset: 8
   special_font_id: special_font
   special_font_yoffset: 6
-  default_clock_font: false
 ```
 
 Please note that yoffset can be tricky.  You should use a number that corresponds with the baseline of the font. For these fonts, there is actually nothing below the font baseline; I've designed the fonts so the non-X fonts are actually raised 1 pixel above the baseline so the tails appear correctly.
@@ -218,7 +243,9 @@ If you wish a character set to be added, open an issue, make a request! Please k
 Check out FontForge: https://fontforge.org/en-US/
 
 ### Thanks to...
-[`Andrew J.Swan`](https://github.com/andrewjswan) for huge help with Cyrillic characters
+[`Andrew J.Swan`](https://github.com/andrewjswan) for huge help with Cyrillic characters.
 
 ### Inspiration
 Originally, I used Tom Thumb as a base. There may be still be some resemblance but that's just because there's only so much you can do with such limited pixels.  Nevertheless, if you're interested in a 4x6 (3x5 useable) monospaced font you can [click here](https://robey.lag.net/2010/01/23/tiny-monospace-font.html).
+
+Also, some inspiration for the Korean characters was borrowed from [Dalmoori Font](https://ranolp.github.io/dalmoori-font/), a very nice Hangul pixel font.
