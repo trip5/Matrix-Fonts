@@ -11,10 +11,10 @@ Most characters will be 3 pixels wide, but certain characters like G and M and &
 I will continue adding characters to fonts as I have time. If you wish your language to be a priority or if you need some certain characters added, open an issue and I'll see what I can do.
 
 ## 8-Series Fonts
-Suitable when using the full height of an 8-row matrix - contains the entire Latin-1 character set, Cyrillic, and a bunch of currency characters
+*Suitable when using the full height of an 8-row matrix*
 
 ### MatrixChunky8
-Everything big and blocky
+Everything big and blocky - looks great as a time screen
 
 ![image](./8-series/MatrixChunky8.png)
 
@@ -29,14 +29,14 @@ Below the baseline is usually reserved for tails but with the 'X' fonts, there i
 [ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixChunky8X.bdf) | [TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixChunky8X.ttf) ]
 
 ### MatrixLight8
-Most characters have been lightened and shaved a bit
+Most characters have been lightened and stylized
 
 ![image](./8-series/MatrixLight8.png)
 
 [ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixLight8.bdf) | [TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixLight8.ttf) ]
 
 ### MatrixLight8X
-All Characters will take up the full 8 rows of pixels - this one looks really good on info screens!
+Lightened and stylized in 8 full rows - this one looks really good on info screens!
 
 ![image](./8-series/MatrixLight8X.png)
 
@@ -44,11 +44,9 @@ All Characters will take up the full 8 rows of pixels - this one looks really go
 
 
 ## 6-Series Fonts
-Suitable when using a weekday band underneath the time on an 8-row matrix
+*Suitable when using a weekday band underneath the time on an 8-row matrix*
 
-I've updated the font files to contain the same characters as the 8-series. A lot of accented characters in the non-X fonts were pushed below the baseline to make them look slightly less terrible.
-
-Cyrillic will be added to this set... soonish.
+Please note a lot of accented characters in the non-X fonts were pushed below the baseline to make them look slightly less terrible.
 
 ### MatrixChunky6
 Everything big and blocky
@@ -58,21 +56,21 @@ Everything big and blocky
 [ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixChunky6.bdf) | [TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixChunky6.ttf) ]
 
 ### MatrixChunky6X
-These characters will take up a full 6 rows of pixels
+Big and blocky in 6 full rows
 
 ![image](./6-series/MatrixChunky6X.png)
 
 [ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixChunky6X.bdf) | [TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixChunky6X.ttf) ]
 
 ### MatrixLight6
-The numbers have been shaved and stylized
+Lightened and stylized
 
 ![image](./6-series/MatrixLight6.png)
 
 [ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixLight6.bdf) | [TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixLight6.ttf) ]
 
 ### MatrixLight6X
-These characters will take up a full 6 rows of pixels
+Lightened and stylized in 6 full rows
 
 ![image](./6-series/MatrixLight6X.png)
 
@@ -138,12 +136,12 @@ Because of the BDF-Pillow flaw (see below), I made a few "useless" characters in
 ```
 
 
-#### Cyrillic * not available in 6-Series Fonts yet
+#### Cyrillic
 ```
 АаБбВвГгҐґДдЕеЄєЖжЗзИиІіЇїЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЬьЮюЯя
 ```
 
-#### Korean (only useful for time, date display) * not available in 6-Series Fonts yet
+#### Korean (only useful for time, date display) * Only in 8-series Fonts
 ```
 오후전일월화수목금토
 ```
@@ -163,7 +161,7 @@ The regular space (as available on most keyboards) is 2 pixels wide. Here are so
 | ` `     | En Space   | U+2002  | 3 pixels |
 | ` `     | Em Space   | U+2003  | 4 pixels |
 
-##### Pixel Spaces (that can be used as characters) * not available in 6-Series Fonts yet
+##### Pixel Spaces (that can be used as characters)
 In case those spaces are no use to you (they're invisible and ESPHome will likely treat them as spaces), here are some other available spaces using the Unicode encircled number set.
 
 ```
@@ -211,7 +209,7 @@ The regular hypen-minus (as available on most keyboards) is 3 pixels wide plus a
 ```
 
 ## ESPHome Notes
-Any characters included in the glyphs list that are not actually in the font will cause ESPHome to error when compiling.
+Any characters included in the glyphs list that are not actually in the font will cause ESPHome to error when compiling.  Any character requested not included in the glyphs list should result in an error and/or a block or blank being displayed by your clock.
 
 Also note that there is a limit of 256 characters that can be used. This is a hard limit set by Pillow, a python dependency that converts fonts to bitmaps usable by ESPHome. If your glyphs list is longer, any characters beyond that limit will simply not be displayed.
 
@@ -230,9 +228,9 @@ When using EspHoMaTriX, check that this is in your yaml (edit as needed):
 ```
 ehmtxv2:
   default_font_id: default_font
-  default_font_yoffset: 8
+  default_font_yoffset: 6
   special_font_id: special_font
-  special_font_yoffset: 6
+  special_font_yoffset: 8
 ```
 
 Please note that yoffset can be tricky.  You should use a number that corresponds with the baseline of the font. For these fonts, there is actually nothing below the font baseline; I've designed the fonts so the non-X fonts are actually raised 1 pixel above the baseline so the tails appear correctly.
