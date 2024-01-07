@@ -143,7 +143,7 @@ Because of the BDF-Pillow flaw (see below), I made a few "useless" characters in
 
 #### Korean (only useful for time, date display) * Only in 8-series Fonts
 ```
-오후전일월화수목금토
+오후전일월화수목금토요
 ```
 
 #### General Punctuation
