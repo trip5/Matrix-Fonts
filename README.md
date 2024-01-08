@@ -135,15 +135,26 @@ Because of the BDF-Pillow flaw (see below), I made a few "useless" characters in
 ĀāĂăĄąĆćĈĉĊċČčĎďĐđĒēĔĕĖėĘęĚěĜĝĞğĠġĢģĤĥĦħĨĩĪīĬĭĮįİıĲĳĴĵĶķĸĹĺĻļĽľĿŀŁłŃńŅņŇňŉŊŋŌōŎŏŐőŒœŔŕŖŗŘřŚśŜŝŞşŠšŢţŤťŦŧŨũŪūŬŭŮůŰűŲųŴŵŶŷŸŹźŻżŽžſ
 ```
 
-
 #### Cyrillic
 ```
 АаБбВвГгҐґДдЕеЄєЖжЗзИиІіЇїЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЬьЮюЯя
 ```
 
-#### Korean (only useful for time, date display) * Only in 8-series Fonts
+#### Greek * Only in 8-series Fonts
+
+Note these have not been eye-tested by an actual Greek person.  Please let me know if they're okay!
+```
+ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΤΥΦΧΨΩΆΈΉΊΌΎΏΪΫαβγδεζηθικλμνξοπρςστυφχψωάέήίϊϋόύώ
+```
+
+#### Korean (only useful for time and date display) * Only in 8-series Fonts
 ```
 오후전일월화수목금토요
+```
+
+#### Chinese (only useful for time and date display) * Only in 8-series Fonts
+```
+一二三四五六天七八九十星期月早上下午
 ```
 
 #### General Punctuation
@@ -247,3 +258,5 @@ Check out FontForge: https://fontforge.org/en-US/
 Originally, I used Tom Thumb as a base. There may be still be some resemblance but that's just because there's only so much you can do with such limited pixels.  Nevertheless, if you're interested in a 4x6 (3x5 useable) monospaced font you can [click here](https://robey.lag.net/2010/01/23/tiny-monospace-font.html).
 
 Also, some inspiration for the Korean characters was borrowed from [Dalmoori Font](https://ranolp.github.io/dalmoori-font/), a very nice Hangul pixel font.
+
+The Chinese characters are almost 100% copied from Version 1.7 of the [Boutique Bitmap 7x7 Font](https://github.com/scott0107000/BoutiqueBitmap7x7/), a Chinese pixel font.
