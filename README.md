@@ -140,7 +140,7 @@ Because of the BDF-Pillow flaw (see below), I made a few "useless" characters in
 АаБбВвГгҐґДдЕеЄєЖжЗзИиІіЇїЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЬьЮюЯя
 ```
 
-#### Greek * Only in 8-series Fonts
+#### Greek * Only in 8-series Fonts (for now)
 
 ```
 ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΤΥΦΧΨΩΆΈΉΊΌΎΏΪΫαβγδεζηθικλμνξοπρςστυφχψωάέήίϊϋόύώ
@@ -218,6 +218,21 @@ The regular hypen-minus (as available on most keyboards) is 3 pixels wide plus a
 #### Letterlike Symbols
 ```
 ℃℉
+```
+
+#### Unknown Character Symbols * Only in 8-series Fonts (for now)
+One of these characters may appear if the character you call for is unavailable.
+
+| Appearance                          | Name              | Unicode |
+| ----------------------------------- | ----------------- | ------- |
+| ![image](./images/char-null.png)    | Null              | U+0000  |
+| ![image](./images/char-box.png)     | White Box         | U+25A1  |
+| ![image](./images/char-unknown.png) | Unknown Character | U+FFFD  |
+
+Note that adding them to the glyphs list in an ESPHome does not seem to help when trying to display an actually unknown character (my clock just paints a wide block)
+but here are the latter two anyways (null isn't usable this way):
+```
+□�
 ```
 
 ## ESPHome Notes
