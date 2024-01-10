@@ -142,10 +142,10 @@ Because of the BDF-Pillow flaw (see below), I made a few "useless" characters in
 
 #### Greek * Only in 8-series Fonts
 
-Note these have not been eye-tested by an actual Greek person.  Please let me know if they're okay!
 ```
 ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΤΥΦΧΨΩΆΈΉΊΌΎΏΪΫαβγδεζηθικλμνξοπρςστυφχψωάέήίϊϋόύώ
 ```
+Note these have not been eye-tested by an actual Greek person.  Please let me know if they're okay!
 
 #### Korean (only useful for time and date display) * Only in 8-series Fonts
 ```
@@ -154,8 +154,9 @@ Note these have not been eye-tested by an actual Greek person.  Please let me kn
 
 #### Chinese (only useful for time and date display) * Only in 8-series Fonts
 ```
-一二三四五六天七八九十星期月早上下午
+一二三四五六天七八九十星期月上下午
 ```
+Note that 上下午 are squished a bit to allow display of 上午 & 下午 more easily.
 
 #### General Punctuation
 
@@ -259,4 +260,4 @@ Originally, I used Tom Thumb as a base. There may be still be some resemblance b
 
 Also, some inspiration for the Korean characters was borrowed from [Dalmoori Font](https://ranolp.github.io/dalmoori-font/), a very nice Hangul pixel font.
 
-The Chinese characters are almost 100% copied from Version 1.7 of the [Boutique Bitmap 7x7 Font](https://github.com/scott0107000/BoutiqueBitmap7x7/), a Chinese pixel font.
+The Chinese characters are almost 100% copied from [Boutique Bitmap 7x7 Font](https://github.com/scott0107000/BoutiqueBitmap7x7/), a Chinese pixel font and stretched a bit in the X-series.
