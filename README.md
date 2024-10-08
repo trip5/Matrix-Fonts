@@ -6,7 +6,7 @@ These fonts are designed with LED Matrix Clocks in mind, especially a unit that 
 
 Because these are bitmap fonts, the size of these fonts is pixel-fixed. They are not resizable. This is a good thing.
 
-Most characters will be 3 pixels wide, but certain characters like G and M and & are wider. Punctuation characters are generally 1 or 2 pixels wide. All characters have 1 empty column on the right side, except the space which is exactly 2 pixels, certain unicode hyphens, and perhaps some ognok-accented latin characters.
+Most characters will be 3 pixels wide, but certain characters like G and M and & are wider. Punctuation characters are generally 1 or 2 pixels wide. All characters have 1 empty column on the right side, except the space which is exactly 2 pixels, certain unicode hyphens, and perhaps some Ognok-accented Latin characters.
 
 I will continue adding characters to fonts as I have time. If you wish your language to be a priority or if you need some certain characters added, open an issue and I'll see what I can do.
 
@@ -140,12 +140,50 @@ Because of the BDF-Pillow flaw (see below), I made a few "useless" characters in
 АаБбВвГгҐґДдЕеЄєЖжЗзИиІіЇїЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЬьЮюЯя
 ```
 
-#### Greek * Only in 8-series Fonts (for now)
+#### Greek * Only in 8-series Fonts
 
 ```
 ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΤΥΦΧΨΩΆΈΉΊΌΎΏΪΫαβγδεζηθικλμνξοπρςστυφχψωάέήίϊϋόύώ
 ```
 Note these have not been eye-tested by an actual Greek person.  Please let me know if they're okay!
+
+#### Vietnamese * Only in 8-series Fonts
+
+Vietnamese uses these characters, already present in Basic Latin and Extended-A  sets:
+```
+ABCDEGHIKLMNOPQRSTUVXYabcdeghiklmnopqrstuvxyÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũ
+```
+As well as these:
+```
+ƠơƯưẠạẢảẤấẦầẨẩẪẫẬậẮắẰằẲẳẴẵẶặẸẹẺẻẼẽẾếỀềỂểỄễỆệỈỉỊịỌọỎỏỐốỒồỔổỖỗỘộỚớỜờỞởỠỡỢợỤụỦủỨứỪừỬửỮữỰựỲỳỴỵỶỷỸỹ
+```
+Note these have not been eye-tested by an actual Vietnamese person.  Please let me know if they're okay!
+A lot of characters in Chunky8 (and some in Light8) had to be pushed below the baseline to make the accent possible.  The 8X fonts are probably okay.
+I do wonder if the vowels with horns or dots are actually legible (particulary the O's in positions 7896 to 7907).
+
+#### International Phonetic Alphabet * Only in 8-series Fonts
+
+Please note that these characters are much wider than the standard characters because tails, staffs, and curves are quite important to the IPA. They are mostly based on the Light8 style and are identical in all 8-series fonts.
+
+The IPA mostly uses these characters:
+```
+ɐɑɒɓɔɕɖɗɘəɚɛɜɝɞɟɠɡɢɣɤɥɦɧɨɪɫɬɭɮɯɰɱɲɳɴɵɶɸɹɺɻɼɽɾɿʀʁʂʃʄʅʈʉʊʋʌʍʎʏʐʑʒʔʕʘʙʚʛʜʝʟʡʢ
+```
+If you're unable to display all characters, depending on your needs, you can try adding the obsolete characters:
+```
+ɩɷʆʇʓʖʗʞʠʣʤʥʦʧʨ
+```
+Possibly the disordered speech characters:
+```
+ʩʪʫʬʭ
+```
+And finally, the Additions for Sinology:
+```
+ʮʯ
+```
+
+
+https://en.wikipedia.org/wiki/IPA_Extensions
 
 #### Korean (only useful for time and date display) * Only in 8-series Fonts
 ```
