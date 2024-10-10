@@ -76,6 +76,8 @@ Lightened and stylized in 6 full rows
 
 [ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixLight6X.bdf) | [TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixLight6X.ttf) ]
 
+---
+
 ## Using These Fonts
 
 ### In ESPHome
@@ -97,17 +99,19 @@ font:
       ! "#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz°
     size: 8
 ```
+---
 
 ## Characters Included
 
 ### Latin-1
 
-#### Basic Latin
+#### <ins>Basic Latin</ins>
 ```
 ! "#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
 ```
 
-#### Latin Extended-A
+#### <ins>Latin Extended-A</ins>
+
 ```
 ¡¢£¤¦§©ª«®°±²³´µ¶¥·¹º»¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ
 ```
@@ -127,27 +131,29 @@ Because of the BDF-Pillow flaw (see below), I made a few "useless" characters in
 | `½`       | ₩ Won       |
 | `¾`       | ₴ Hryvnia   |
 
+---
+
 ### Unicode
 
-#### Latin-1 Supplement
+#### <u>Latin-1 Supplement</u>
 
 ```
 ĀāĂăĄąĆćĈĉĊċČčĎďĐđĒēĔĕĖėĘęĚěĜĝĞğĠġĢģĤĥĦħĨĩĪīĬĭĮįİıĲĳĴĵĶķĸĹĺĻļĽľĿŀŁłŃńŅņŇňŉŊŋŌōŎŏŐőŒœŔŕŖŗŘřŚśŜŝŞşŠšŢţŤťŦŧŨũŪūŬŭŮůŰűŲųŴŵŶŷŸŹźŻżŽžſ
 ```
 
-#### Cyrillic
+#### <u>Cyrillic</u>
 ```
 АаБбВвГгҐґДдЕеЄєЖжЗзИиІіЇїЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЬьЮюЯя
 ```
 
-#### Greek * Only in 8-series Fonts
+#### <u>Greek</u> _* Only in 8-series Fonts_
 
 ```
 ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΤΥΦΧΨΩΆΈΉΊΌΎΏΪΫαβγδεζηθικλμνξοπρςστυφχψωάέήίϊϋόύώ
 ```
 Note these have not been eye-tested by an actual Greek person.  Please let me know if they're okay!
 
-#### Vietnamese * Only in 8-series Fonts
+#### <u>Vietnamese</u> _* Only in 8-series Fonts_
 
 Vietnamese uses these characters, already present in Basic Latin and Extended-A  sets:
 ```
@@ -161,7 +167,7 @@ Note these have not been eye-tested by an actual Vietnamese person.  Please let 
 A lot of characters in Chunky8 (and some in Light8) had to be pushed below the baseline to make the accent possible.  The 8X fonts are probably okay.
 I do wonder if the vowels with horns or dots are actually legible (particulary the O's in positions 7896 to 7907).
 
-#### International Phonetic Alphabet * Only in 8-series Fonts
+#### <u>International Phonetic Alphabet</u> _* Only in 8-series Fonts_
 
 Please note that these characters are much wider than the standard characters because tails, staffs, and curves are quite important to the IPA. They are mostly based on the Light8 style and are identical in all 8-series fonts.
 
@@ -182,21 +188,18 @@ And finally, the Additions for Sinology:
 ʮʯ
 ```
 
-
-https://en.wikipedia.org/wiki/IPA_Extensions
-
-#### Korean (only useful for time and date display) * Only in 8-series Fonts
+#### <u>Korean</u> _* Only in 8-series Fonts (only useful for time and date display)_
 ```
 오후전일월화수목금토요
 ```
 
-#### Chinese (only useful for time and date display) * Only in 8-series Fonts
+#### <u>Chinese</u> _* Only in 8-series Fonts (only useful for time and date display)_
 ```
 一二三四五六天七八九十星期月上下午
 ```
 Note that 上下午 are squished a bit to allow display of 上午 & 下午 more easily.
 
-#### General Punctuation
+#### <u>General Punctuation</u>
 
 ##### Spaces
 The regular space (as available on most keyboards) is 2 pixels wide. Here are some other available spaces.
@@ -258,7 +261,7 @@ The regular hypen-minus (as available on most keyboards) is 3 pixels wide plus a
 ℃℉
 ```
 
-#### Unknown Character Symbols * Only in 8-series Fonts (for now)
+#### Unknown Character Symbols _* Only in 8-series Fonts (for now)_
 One of these characters may appear if the character you call for is unavailable.
 
 | Appearance                          | Name              | Unicode |
@@ -272,6 +275,8 @@ but here are the latter two anyways (null isn't usable this way):
 ```
 □�
 ```
+
+---
 
 ## ESPHome Notes
 Any characters included in the glyphs list that are not actually in the font will cause ESPHome to error when compiling.  Any character requested not included in the glyphs list should result in an error and/or a block or blank being displayed by your clock.
@@ -287,6 +292,7 @@ This error has to do with the way that Pillow interprets a BDF font file as bein
 
 These TTF files are not usable by Windows, since they include only bitmaps. They are also not very useful when editing the font. So the BDF files will always be considered as master files.
 
+---
 
 ## EspHoMaTriXv2
 When using EspHoMaTriX, check that this is in your yaml (edit as needed):
@@ -299,6 +305,8 @@ ehmtxv2:
 ```
 
 Please note that yoffset can be tricky.  You should use a number that corresponds with the baseline of the font. For these fonts, there is actually nothing below the font baseline; I've designed the fonts so the non-X fonts are actually raised 1 pixel above the baseline so the tails appear correctly.
+
+---
 
 ## Editing or Contributing
 If you wish a character set to be added, open an issue, make a request! Please keep your communication lines open because I'm not likely familiar with your language and I'll have questions!
