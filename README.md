@@ -86,7 +86,7 @@ To reduce the space that the font takes up during the compile please use code as
 font: 
   - file: fonts/MatrixLight6.bdf
     id: special_font
-    glyphs:  |
+    glyphs:  |-
       ! "#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz°
 ```
 
@@ -95,7 +95,7 @@ If using a TTF file, you must specify the font size:
 font: 
   - file: fonts/MatrixLight8.ttf
     id: default_font
-    glyphs:  |
+    glyphs:  |-
       ! "#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz°
     size: 8
 ```
