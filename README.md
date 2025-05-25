@@ -1,19 +1,27 @@
 # Matrix Fonts
+
 Fonts to be used with LED Matrix Clocks and other LED Matrix projects
 
 ## About These Fonts
+
 These fonts are designed with LED Matrix Clocks in mind, especially a unit that uses [`EspHoMaTriXv2`](https://github.com/lubeda/EspHoMaTriXv2/) or [`EspHome-Led-PixelClock`](https://github.com/trip5/EspHome-Led-PixelClock/). They are BDF and TTF Fonts, so they can be directly implemented with ESPHome (and perhaps Arduino).
 
 Because these are bitmap fonts, the size of these fonts is pixel-fixed. They are not resizable. This is a good thing.
+
+These TTF files are not usable by Windows, since they include only bitmaps. They are also not very useful when editing the font. So the BDF files will always be considered as master files.
 
 Most characters will be 3 pixels wide, but certain characters like G and M and & are wider. Punctuation characters are generally 1 or 2 pixels wide. All characters have 1 empty column on the right side, except the space which is exactly 2 pixels, certain unicode hyphens, and perhaps some Ognok-accented Latin characters.
 
 I will continue adding characters to fonts as I have time. If you wish your language to be a priority or if you need some certain characters added, open an issue and I'll see what I can do.
 
+---
+
 ## 8-Series Fonts
+
 *Suitable when using the full height of an 8-row matrix*
 
 ### MatrixChunky8
+
 Everything big and blocky - looks great as a time screen
 
 ![image](./8-series/MatrixChunky8.png)
@@ -22,6 +30,7 @@ Everything big and blocky - looks great as a time screen
 [TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixChunky8.ttf) ]
 
 ### MatrixChunky8X
+
 Below the baseline is usually reserved for tails but with the 'X' fonts, there is no baseline - everything takes up the full 8 rows of pixels
 
 ![image](./8-series/MatrixChunky8X.png)
@@ -29,6 +38,7 @@ Below the baseline is usually reserved for tails but with the 'X' fonts, there i
 [ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixChunky8X.bdf) | [TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixChunky8X.ttf) ]
 
 ### MatrixLight8
+
 Most characters have been lightened and stylized
 
 ![image](./8-series/MatrixLight8.png)
@@ -36,12 +46,14 @@ Most characters have been lightened and stylized
 [ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixLight8.bdf) | [TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixLight8.ttf) ]
 
 ### MatrixLight8X
+
 Lightened and stylized in 8 full rows - this one looks really good on info screens!
 
 ![image](./8-series/MatrixLight8X.png)
 
 [ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixLight8X.bdf) | [TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixLight8X.ttf) ]
 
+---
 
 ## 6-Series Fonts
 *Suitable when using a weekday band underneath the time on an 8-row matrix*
@@ -49,6 +61,7 @@ Lightened and stylized in 8 full rows - this one looks really good on info scree
 Please note a lot of accented characters in the non-X fonts were pushed below the baseline to make them look slightly less terrible.
 
 ### MatrixChunky6
+
 Everything big and blocky
 
 ![image](./6-series/MatrixChunky6.png)
@@ -56,6 +69,7 @@ Everything big and blocky
 [ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixChunky6.bdf) | [TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixChunky6.ttf) ]
 
 ### MatrixChunky6X
+
 Big and blocky in 6 full rows
 
 ![image](./6-series/MatrixChunky6X.png)
@@ -63,6 +77,7 @@ Big and blocky in 6 full rows
 [ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixChunky6X.bdf) | [TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixChunky6X.ttf) ]
 
 ### MatrixLight6
+
 Lightened and stylized
 
 ![image](./6-series/MatrixLight6.png)
@@ -70,6 +85,7 @@ Lightened and stylized
 [ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixLight6.bdf) | [TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixLight6.ttf) ]
 
 ### MatrixLight6X
+
 Lightened and stylized in 6 full rows
 
 ![image](./6-series/MatrixLight6X.png)
@@ -78,34 +94,12 @@ Lightened and stylized in 6 full rows
 
 ---
 
-## Using These Fonts
-
-### In ESPHome
-To reduce the space that the font takes up during the compile please use code as such:
-```
-font: 
-  - file: fonts/MatrixLight6.bdf
-    id: special_font
-    glyphs:  |-
-      ! "#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz°
-```
-
-If using a TTF file, you must specify the font size:
-```
-font: 
-  - file: fonts/MatrixLight8.ttf
-    id: default_font
-    glyphs:  |-
-      ! "#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz°
-    size: 8
-```
----
-
 ## Characters Included
 
 ### Latin-1
 
 #### <ins>Basic Latin</ins>
+
 ```
 ! "#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
 ```
@@ -117,10 +111,13 @@ font:
 ```
 
 ##### Character Substitutions in Latin Extended-A
+
 Because of the BDF-Pillow flaw (see below), I made a few "useless" characters in the Latin Extended-A look like something else. You can still use a BDF file if you use these special characters in the glyphs list and in Home Assistant.
+
 ```
 ¨¬¯¸¼½¾
 ```
+
 | Character | Appears As  |
 | --------- | ----------- |
 | `¨`       | ₿ Bitcoin   |
@@ -142,6 +139,7 @@ Because of the BDF-Pillow flaw (see below), I made a few "useless" characters in
 ```
 
 #### <u>Cyrillic</u>
+
 ```
 АаБбВвГгҐґДдЕеЄєЖжЗзИиІіЇїЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЬьЮюЯя
 ```
@@ -151,18 +149,23 @@ Because of the BDF-Pillow flaw (see below), I made a few "useless" characters in
 ```
 ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΤΥΦΧΨΩΆΈΉΊΌΎΏΪΫαβγδεζηθικλμνξοπρςστυφχψωάέήίϊϋόύώ
 ```
+
 Note these have not been eye-tested by an actual Greek person.  Please let me know if they're okay!
 
 #### <u>Vietnamese</u> _* Only in 8-series Fonts_
 
-Vietnamese uses these characters, already present in Basic Latin and Extended-A  sets:
+Vietnamese uses these characters, already present in Basic Latin and Extended-A sets:
+
 ```
 ABCDEGHIKLMNOPQRSTUVXYabcdeghiklmnopqrstuvxyÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũ
 ```
+
 As well as these:
+
 ```
 ƠơƯưẠạẢảẤấẦầẨẩẪẫẬậẮắẰằẲẳẴẵẶặẸẹẺẻẼẽẾếỀềỂểỄễỆệỈỉỊịỌọỎỏỐốỒồỔổỖỗỘộỚớỜờỞởỠỡỢợỤụỦủỨứỪừỬửỮữỰựỲỳỴỵỶỷỸỹ
 ```
+
 Note these have not been eye-tested by an actual Vietnamese person.  Please let me know if they're okay!
 A lot of characters in Chunky8 (and some in Light8) had to be pushed below the baseline to make the accent possible.  The 8X fonts are probably okay.
 I do wonder if the vowels with horns or dots are actually legible (particulary the O's in positions 7896 to 7907).
@@ -172,32 +175,42 @@ I do wonder if the vowels with horns or dots are actually legible (particulary t
 Please note that these characters are much wider than the standard characters because tails, staffs, and curves are quite important to the IPA. They are mostly based on the Light8 style and are identical in all 8-series fonts.
 
 The IPA mostly uses these characters:
+
 ```
 ɐɑɒɓɔɕɖɗɘəɚɛɜɝɞɟɠɡɢɣɤɥɦɧɨɪɫɬɭɮɯɰɱɲɳɴɵɶɸɹɺɻɼɽɾɿʀʁʂʃʄʅʈʉʊʋʌʍʎʏʐʑʒʔʕʘʙʚʛʜʝʟʡʢ
 ```
+
 If you're unable to display all characters, depending on your needs, you can try adding the obsolete characters:
+
 ```
 ɩɷʆʇʓʖʗʞʠʣʤʥʦʧʨ
 ```
-Possibly the disordered speech characters:
+
+Possibly the Disordered Speech Characters:
+
 ```
 ʩʪʫʬʭ
 ```
+
 And finally, the Additions for Sinology:
+
 ```
 ʮʯ
 ```
 
 #### <u>Korean</u> _* Only in 8-series Fonts (only useful for time and date display)_
+
 ```
-오후전일월화수목금토요
+오후전일월화수목금토요년
 ```
 
 #### <u>Chinese</u> _* Only in 8-series Fonts (only useful for time and date display)_
+
 ```
-一二三四五六天七八九十星期月上下午
+一二三四五六天七八九十星期月上下午年日零〇
 ```
-Note that 上下午 are squished a bit to allow display of 上午 & 下午 more easily.
+
+Note that 上下午 are squished a bit to allow display of 上午 & 下午 more easily.  Also, 零 probably looks terrible.
 
 #### <u>General Punctuation</u>
 
@@ -237,6 +250,7 @@ In case those spaces are no use to you (they're invisible and ESPHome will likel
 
 
 ##### Other Punctuation Marks
+
 The regular hypen-minus (as available on most keyboards) is 3 pixels wide plus a space.  Here are some other available punctuations.
 
 ```
@@ -252,16 +266,19 @@ The regular hypen-minus (as available on most keyboards) is 3 pixels wide plus a
 | `•`     | Bullet         | U+2022  | 1 pixel wide + space   |
 
 #### Currency Symbols
+
 ```
 ₡₢₦₩₪₫€₭₮₱₲₴₵₸₹₺₼₽₾₿
 ```
 
 #### Letterlike Symbols
+
 ```
 ℃℉
 ```
 
 #### Unknown Character Symbols _* Only in 8-series Fonts (for now)_
+
 One of these characters may appear if the character you call for is unavailable.
 
 | Appearance                          | Name              | Unicode |
@@ -272,30 +289,63 @@ One of these characters may appear if the character you call for is unavailable.
 
 Note that adding them to the glyphs list in an ESPHome does not seem to help when trying to display an actually unknown character (my clock just paints a wide block)
 but here are the latter two anyways (null isn't usable this way):
+
 ```
 □�
 ```
 
 ---
 
-## ESPHome Notes
-Any characters included in the glyphs list that are not actually in the font will cause ESPHome to error when compiling.  Any character requested not included in the glyphs list should result in an error and/or a block or blank being displayed by your clock.
+## Using These Fonts In ESPHome
 
-Also note that there is a limit of 256 characters that can be used. This is a hard limit set by Pillow, a python dependency that converts fonts to bitmaps usable by ESPHome. If your glyphs list is longer, any characters beyond that limit will simply not be displayed.
+To reduce the space that the font takes up during the compile please use code as such:
+
+```
+font: 
+  - file: fonts/MatrixLight6.bdf
+    id: special_font
+    glyphs:  |-
+      ! "#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz°
+```
+
+If using a TTF file, you must specify the font size:
+
+```
+font: 
+  - file: fonts/MatrixLight8.ttf
+    id: default_font
+    glyphs:  |-
+      ! "#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz°
+    size: 8
+```
+
+### Special Note Regarding TTF & BDF
+
+As of 2024, ESPHome was using Pillow to encode fonts and it would not encode Unicode BDF files correctly.
+Anything beyond the normal ASCII range would cause errors (see next note).
+
+Sometime in 2025, ESPHome switched to Freetype for font encoding and I can confirm that at least with version 2025.04,
+BDF files with Unicode appear to be encoded correctly but if you get any errors, try the TTF font.
+There is no size difference in the compiled .bin file so don't worry if one is more or less space-efficient than the other.
 
 ### Unicode Character Error
+
 ```
 UnicodeEncodeError: 'latin-1' codec can't encode character '\u0416' in position 0: ordinal not in range(256)
 ```
 
 This error has to do with the way that Pillow interprets a BDF font file as being in the Latin-1 codepage if the character list doesn't match what it expects. Since that part of Pillow is quite old, there seems to be no interest in fixing it to match UTF standards. So, if you wish to use Unicode characters (anything outside of Latin Basic and Extended-A), you must use a TTF file instead.
 
-These TTF files are not usable by Windows, since they include only bitmaps. They are also not very useful when editing the font. So the BDF files will always be considered as master files.
+### Compiling Errors
 
----
+Any characters included in the glyphs list that are not actually in the font will cause ESPHome to error when compiling.  Any character requested not included in the glyphs list should result in an error and/or a block or blank being displayed by your clock.
 
-## EspHoMaTriXv2
-When using EspHoMaTriX, check that this is in your yaml (edit as needed):
+Also note that there is a limit of 256 characters that can be used. This is a hard limit set by Pillow, a python dependency that converts fonts to bitmaps usable by ESPHome. If your glyphs list is longer, any characters beyond that limit will simply not be displayed.
+
+### EspHoMaTriXv2
+
+When using EspHoMaTriX, check that this is in your yaml (edit as needed) (this note may be outdated):
+
 ```
 ehmtxv2:
   default_font_id: default_font
@@ -308,12 +358,33 @@ Please note that yoffset can be tricky.  You should use a number that correspond
 
 ---
 
+## Update History
+
+| Date       | Release Notes    |
+| ---------- | ---------------- |
+| 2025.05.25 | Minor fixes to Korean, Chinese, ESPHome now works with BDF |
+| 2024.10.09 | Vietnamese and IPA added to 8-series |
+| 2024.01.09 | Greek and Chinese added to 8-series |
+| 2023.10.15 | Cyrillic added to 6-series |
+| 2023.10.13 | Korean added to 8-series |
+| 2023.10.05 | Readme improved, hyphens and spaces added |
+| 2023.09.23 | Cyrillic added to 8-series |
+| 2023.09.22 | More Unicode characters added, renamed from MatrixClock fonts to Matrix fonts |
+| 2023.09.18 | Added Latin-1 Supplement to 6-series |
+| 2023.07.23 | X-series fonts added (TTF & BDF fonts): Added Latin-1 Supplement to 8-series |
+| 2023.04.06 | 6-series & 8-series fonts based on Tom Thumb: ASCII character set (TTF & BSD fonts) |
+
+---
+
 ## Editing or Contributing
+
 If you wish a character set to be added, open an issue, make a request! Please keep your communication lines open because I'm not likely familiar with your language and I'll have questions!
 
 Check out FontForge: https://fontforge.org/en-US/
 
 ### Thanks to...
+
+My wife for huge help with Korean and Chinese characters.
 [`Andrew J.Swan`](https://github.com/andrewjswan) for huge help with Cyrillic characters.
 
 ### Inspiration
