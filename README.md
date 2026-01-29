@@ -1,3 +1,5 @@
+![image](./images/MatrixFonts.png)
+
 # Matrix Fonts
 
 Fonts to be used with LED Matrix Clocks and other LED Matrix projects
