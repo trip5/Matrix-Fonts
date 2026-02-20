@@ -109,26 +109,8 @@ Lightened and stylized in 6 full rows
 #### <ins>Latin Extended-A</ins>
 
 ```
-¡¢£¤¦§©ª«®°±²³´µ¶¥·¹º»¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ
+¡¢£¤¦§¨©ª«¬®¯°±²³´µ¶¥·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ
 ```
-
-##### Character Substitutions in Latin Extended-A
-
-Because of the BDF-Pillow flaw (see below), I made a few "useless" characters in the Latin Extended-A look like something else. You can still use a BDF file if you use these special characters in the glyphs list and in Home Assistant.
-
-```
-¨¬¯¸¼½¾
-```
-
-| Character | Appears As  |
-| --------- | ----------- |
-| `¨`       | ₿ Bitcoin   |
-| `¸`       | Ξ Ethereum  |
-| `¬`       | ℃ Degree C |
-| `¯`       | ℉ Degree F |
-| `¼`       | € Euro      |
-| `½`       | ₩ Won       |
-| `¾`       | ₴ Hryvnia   |
 
 ---
 
@@ -321,30 +303,34 @@ font:
     size: 8
 ```
 
-### Special Note Regarding TTF & BDF
+### Special Notes Regarding TTF & BDF
+
+#### Pillow / ESPHome
 
 As of 2024, ESPHome was using Pillow to encode fonts and it would not encode Unicode BDF files correctly.
-Anything beyond the normal ASCII range would cause errors (see next note).
+Anything beyond the normal ASCII range would cause errors (see Pillow notes).
 
-Sometime in 2025, ESPHome switched to Freetype for font encoding and I can confirm that at least with version 2025.04,
-BDF files with Unicode appear to be encoded correctly but if you get any errors, try the TTF font.
+Sometime in 2025, ESPHome switched to Freetype for font encoding and I can confirm that with version 2025.04 and later,
+BDF files with Unicode appear to be encoded correctly... but if you get any errors, try the TTF font.
 There is no size difference in the compiled .bin file so don't worry if one is more or less space-efficient than the other.
 
-### Unicode Character Error
+
+#### Unicode Character Error
 
 ```
 UnicodeEncodeError: 'latin-1' codec can't encode character '\u0416' in position 0: ordinal not in range(256)
 ```
 
-This error has to do with the way that Pillow interprets a BDF font file as being in the Latin-1 codepage if the character list doesn't match what it expects. Since that part of Pillow is quite old, there seems to be no interest in fixing it to match UTF standards. So, if you wish to use Unicode characters (anything outside of Latin Basic and Extended-A), you must use a TTF file instead.
+This error has to do with the way that Pillow interprets a BDF font file as being in the Latin-1 codepage if the character list doesn't match what it expects. Since that part of Pillow is quite old, there seems to be no interest in fixing it to match UTF standards.
+So, if you wish to use Unicode characters (anything outside of Latin Basic and Extended-A), you must use a TTF file instead.
 
-### Compiling Errors
+#### Compiling Errors with Pillow
 
 Any characters included in the glyphs list that are not actually in the font will cause ESPHome to error when compiling.  Any character requested not included in the glyphs list should result in an error and/or a block or blank being displayed by your clock.
 
-Also note that there is a limit of 256 characters that can be used. This is a hard limit set by Pillow, a python dependency that converts fonts to bitmaps usable by ESPHome. If your glyphs list is longer, any characters beyond that limit will simply not be displayed.
+Also note that there is a limit of 256 characters that can be used. This is a hard limit set by Pillow. If your glyphs list is longer, any characters beyond that limit will simply not be displayed.
 
-### EspHoMaTriXv2
+#### EspHoMaTriXv2
 
 When using EspHoMaTriX, check that this is in your yaml (edit as needed) (this note may be outdated):
 
@@ -364,6 +350,7 @@ Please note that yoffset can be tricky.  You should use a number that correspond
 
 | Date       | Release Notes    |
 | ---------- | ---------------- |
+| 2026.02.20 | Unknown characters added to Light fonts, superscript numbers adjusted in 6-series, "Character substiutions" removed from all |
 | 2025.05.25 | Minor fixes to Korean, Chinese, ESPHome now works with BDF |
 | 2024.10.09 | Vietnamese and IPA added to 8-series |
 | 2024.01.09 | Greek and Chinese added to 8-series |
