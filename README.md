@@ -164,21 +164,11 @@ The IPA mostly uses these characters:
 ɐɑɒɓɔɕɖɗɘəɚɛɜɝɞɟɠɡɢɣɤɥɦɧɨɪɫɬɭɮɯɰɱɲɳɴɵɶɸɹɺɻɼɽɾɿʀʁʂʃʄʅʈʉʊʋʌʍʎʏʐʑʒʔʕʘʙʚʛʜʝʟʡʢ
 ```
 
-If you're unable to display all characters, depending on your needs, you can try adding the obsolete characters:
+If you're unable to display all characters, depending on your needs, you can try adding the Obsolete / Disordered Speech / Sinology characters:
 
 ```
 ɩɷʆʇʓʖʗʞʠʣʤʥʦʧʨ
-```
-
-Possibly the Disordered Speech Characters:
-
-```
 ʩʪʫʬʭ
-```
-
-And finally, the Additions for Sinology:
-
-```
 ʮʯ
 ```
 
@@ -261,7 +251,7 @@ The regular hypen-minus (as available on most keyboards) is 3 pixels wide plus a
 ℃℉
 ```
 
-#### Unknown Character Symbols _* Only in 8-series Fonts (for now)_
+#### Unknown Character Symbols
 
 One of these characters may appear if the character you call for is unavailable.
 
@@ -282,7 +272,7 @@ but here are the latter two anyways (null isn't usable this way):
 
 ## Using These Fonts In ESPHome
 
-To reduce the space that the font takes up during the compile please use code as such:
+To reduce the space that the font takes up during the compile please use code as such (specify which glyphs to include):
 
 ```
 font: 
@@ -292,7 +282,7 @@ font:
       ! "#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz°
 ```
 
-If using a TTF file, you must specify the font size:
+If using a TTF file, you MUST specify the font size:
 
 ```
 font: 
@@ -303,34 +293,46 @@ font:
     size: 8
 ```
 
-### Special Notes Regarding TTF & BDF
+According to the guide in the [ESPHome docs](https://esphome.io/components/font/), this is the way to include special characters:
 
-#### Pillow / ESPHome
+```
+    glyphs: [
+      "%0123456789 EHLPClock.DatenfWiONI:SpTAr",
+      "\u0000", # null
+      "\u25A1", # white box
+      "\uFFFD", # unknown character
+      ]
+```
 
-As of 2024, ESPHome was using Pillow to encode fonts and it would not encode Unicode BDF files correctly.
-Anything beyond the normal ASCII range would cause errors (see Pillow notes).
+Note this doesn't actually seem to work for getting ESPHome to show the box or unknown character when trying to display an un-included glyph...
+adding `null` and `white box` (together) change something about how it is handled - a box is shown but it isn't the one in the font (and adding `unknown character` has no effect).
 
-Sometime in 2025, ESPHome switched to Freetype for font encoding and I can confirm that with version 2025.04 and later,
+### BDF or TTF?
+
+Sometime in 2025, ESPHome switched to Freetype for font encoding (instead of Pillow).
+
 BDF files with Unicode appear to be encoded correctly... but if you get any errors, try the TTF font.
 There is no size difference in the compiled .bin file so don't worry if one is more or less space-efficient than the other.
 
+#### Pillow Problems with BDF
 
-#### Unicode Character Error
+As of 2024, ESPHome was using Pillow to encode fonts and it would not encode Unicode BDF files correctly.
+Anything beyond the normal ASCII range would cause errors like:
 
 ```
 UnicodeEncodeError: 'latin-1' codec can't encode character '\u0416' in position 0: ordinal not in range(256)
 ```
 
 This error has to do with the way that Pillow interprets a BDF font file as being in the Latin-1 codepage if the character list doesn't match what it expects. Since that part of Pillow is quite old, there seems to be no interest in fixing it to match UTF standards.
-So, if you wish to use Unicode characters (anything outside of Latin Basic and Extended-A), you must use a TTF file instead.
+So, if you're stuck with Pillow and wish to use Unicode characters (anything outside of Latin Basic and Extended-A), you must use a TTF file instead.
 
-#### Compiling Errors with Pillow
+### Compiling Errors
 
 Any characters included in the glyphs list that are not actually in the font will cause ESPHome to error when compiling.  Any character requested not included in the glyphs list should result in an error and/or a block or blank being displayed by your clock.
 
 Also note that there is a limit of 256 characters that can be used. This is a hard limit set by Pillow. If your glyphs list is longer, any characters beyond that limit will simply not be displayed.
 
-#### EspHoMaTriXv2
+### EspHoMaTriXv2
 
 When using EspHoMaTriX, check that this is in your yaml (edit as needed) (this note may be outdated):
 
