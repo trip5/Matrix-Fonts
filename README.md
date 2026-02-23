@@ -379,6 +379,7 @@ My wife for huge help with Korean and Chinese characters.
 [`Andrew J.Swan`](https://github.com/andrewjswan) for huge help with Cyrillic characters.
 
 ### Inspiration
+
 Originally, I used Tom Thumb as a base. There may be still be some resemblance but that's just because there's only so much you can do with such limited pixels.  Nevertheless, if you're interested in a 4x6 (3x5 useable) monospaced font you can [click here](https://robey.lag.net/2010/01/23/tiny-monospace-font.html).
 
 Also, some inspiration for the Korean characters was borrowed from [Dalmoori Font](https://ranolp.github.io/dalmoori-font/), a very nice Hangul pixel font.
