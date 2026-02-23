@@ -19,7 +19,6 @@ I will continue adding characters to fonts as I have time. If you wish your lang
 ---
 
 ## 8-Series Fonts
-
 *Suitable when using the full height of an 8-row matrix*
 
 ### MatrixChunky8
