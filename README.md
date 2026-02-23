@@ -374,7 +374,7 @@ Check out FontForge: https://fontforge.org/en-US/
 
 ### Thanks to...
 
-My wife (Mrs. Trip5) for huge help with Korean and Chinese characters.
+My wife for huge help with Korean and Chinese characters.
 
 [`Andrew J.Swan`](https://github.com/andrewjswan) for huge help with Cyrillic characters.
 
