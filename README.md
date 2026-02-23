@@ -325,6 +325,8 @@ UnicodeEncodeError: 'latin-1' codec can't encode character '\u0416' in position 
 This error has to do with the way that Pillow interprets a BDF font file as being in the Latin-1 codepage if the character list doesn't match what it expects. Since that part of Pillow is quite old, there seems to be no interest in fixing it to match UTF standards.
 So, if you're stuck with Pillow and wish to use Unicode characters (anything outside of Latin Basic and Extended-A), you must use a TTF file instead.
 
+Sidenote that Pillow also has a glyph limit with BDF fonts of 256.  Freetype has no such limit (I think).
+
 ### Compiling Errors
 
 Any characters included in the glyphs list that are not actually in the font will cause ESPHome to error when compiling.  Any character requested not included in the glyphs list should result in an error and/or a block or blank being displayed by your clock.
