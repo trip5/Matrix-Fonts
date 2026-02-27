@@ -1,5 +1,5 @@
 site_name: Matrix Fonts
-site_description: Fonts for LED Matrix displays with 6 or 8 pixel-height displays
+site_description: Fonts for LED Matrix displays with 6 or 8 rows of pixels
 site_url: https://trip5.github.io/Matrix-Fonts/
 repo_url: https://github.com/trip5/Matrix-Fonts
 repo_name: trip5/Matrix-Fonts

@@ -366,7 +366,7 @@ Please note that yoffset can be tricky.  You should use a number that correspond
 
 | Date       | Release Notes    |
 | ---------- | ---------------- |
-| 2026.02.27 | Font renderer added |
+| 2026.02.27 | Font renderer added, more minor fixes to many glyphs |
 | 2026.02.20 | Unknown characters added to Light fonts, "Character substiutions" removed from all, minor fixes to many glyphs |
 | 2025.05.25 | Minor fixes to Korean, Chinese, ESPHome now works with BDF |
 | 2024.10.09 | Vietnamese and IPA added to 8-series |
