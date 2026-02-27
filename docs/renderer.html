@@ -245,8 +245,8 @@
             </div>
             
             <div class="control-group">
-                <label for="pixelSize">Pixel Size (1-18):</label>
-                <input type="number" id="pixelSize" min="1" max="18" value="5" />
+                <label for="pixelSize">Pixel Size (1-100):</label>
+                <input type="number" id="pixelSize" min="1" max="100" value="5" />
             </div>
 
             <div class="control-group">
@@ -438,9 +438,11 @@
 
         // LED Renderer
         class LEDRenderer {
-            constructor(pixelSize, color, diffusionStrength) {
-                this.pixelSize = Math.max(1, Math.min(18, pixelSize));
+            constructor(pixelSize, color, diffusionStrength, bgColor, transparentBg) {
+                this.pixelSize = Math.max(1, Math.min(100, pixelSize));
                 this.color = this.hexToRgb(color);
+                this.bgColor = this.hexToRgb(bgColor);
+                this.transparentBg = transparentBg;
                 this.diffusionStrength = diffusionStrength;
                 this.ledPattern = this.createLEDPattern();
             }
@@ -552,10 +554,20 @@
                         
                         if (intensity > 0) {
                             const idx = (y * canvasWidth + x) * 4;
-                            imageData.data[idx] = this.color.r * intensity;
-                            imageData.data[idx + 1] = this.color.g * intensity;
-                            imageData.data[idx + 2] = this.color.b * intensity;
-                            imageData.data[idx + 3] = 255 * Math.min(1, intensity * 1.5);
+                            
+                            if (this.transparentBg) {
+                                // Transparent background: use alpha for diffusion effect
+                                imageData.data[idx] = this.color.r * intensity;
+                                imageData.data[idx + 1] = this.color.g * intensity;
+                                imageData.data[idx + 2] = this.color.b * intensity;
+                                imageData.data[idx + 3] = 255 * intensity;
+                            } else {
+                                // Solid background: blend pixel color with background color
+                                imageData.data[idx] = this.color.r * intensity + this.bgColor.r * (1 - intensity);
+                                imageData.data[idx + 1] = this.color.g * intensity + this.bgColor.g * (1 - intensity);
+                                imageData.data[idx + 2] = this.color.b * intensity + this.bgColor.b * (1 - intensity);
+                                imageData.data[idx + 3] = 255;
+                            }
                         }
                     }
                 }
@@ -669,7 +681,7 @@
             const isFullJustified = document.getElementById('fullJustifiedText').checked;
 
             const text = document.getElementById('textInput').value;
-            const pixelSize = parseInt(document.getElementById('pixelSize').value);
+            const pixelSize = Math.max(1, Math.min(100, parseInt(document.getElementById('pixelSize').value)));
             const pixelColor = document.getElementById('pixelColor').value;
             const pixelSpacing = parseInt(document.getElementById('pixelSpacing').value);
             const renderedMaxWidth = parseInt(document.getElementById('renderedMaxWidth').value);
@@ -749,7 +761,7 @@
             }
 
             // Calculate dimensions
-            const renderer = new LEDRenderer(pixelSize, pixelColor, diffusionStrength);
+            const renderer = new LEDRenderer(pixelSize, pixelColor, diffusionStrength, bgColor, transparentBg);
             let maxWidth = 0;
             const lineWidths = [];
 
