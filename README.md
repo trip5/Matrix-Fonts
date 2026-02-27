@@ -4,8 +4,6 @@
 
 ***This documentation is the same on the [Github Page](https://trip5.github.io/Matrix-Fonts/), which may be easier to read.***
 
-Fonts to be used with LED Matrix Clocks and other LED Matrix projects
-
 ## About These Fonts
 
 These fonts are designed with LED Matrix Clocks in mind, especially a unit that uses [`EspHoMaTriXv2`](https://github.com/lubeda/EspHoMaTriXv2/) or [`EspHome-Led-PixelClock`](https://github.com/trip5/EspHome-Led-PixelClock/). They are BDF and TTF Fonts, so they can be directly implemented with ESPHome (and perhaps Arduino).
