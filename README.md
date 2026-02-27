@@ -2,6 +2,8 @@
 
 # Matrix Fonts
 
+***This documentation is the same on the [Github Page](https://trip5.github.io/Matrix-Fonts/), which may be easier to read.***
+
 Fonts to be used with LED Matrix Clocks and other LED Matrix projects
 
 ## About These Fonts
