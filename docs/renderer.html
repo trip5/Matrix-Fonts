@@ -270,7 +270,7 @@
             
             <div class="control-group">
                 <label for="diffusionStrength">Diffusion Strength (0.0-1.0):</label>
-                <input type="number" id="diffusionStrength" min="0" max="1" step="0.05" value="0.95" />
+                <input type="number" id="diffusionStrength" min="0" max="1" step="0.05" value="1.00" />
             </div>
 
             <div class="control-group">
@@ -459,84 +459,72 @@
             createLEDPattern() {
                 const size = this.pixelSize;
                 const pattern = [];
+                
+                // Calculate center point
+                const centerX = (size - 1) / 2;
+                const centerY = (size - 1) / 2;
+                
+                // Calculate maximum possible distance (from center to corner)
+                const maxDistance = Math.sqrt(centerX * centerX + centerY * centerY);
+                
+                // Determine max levels based on size (logarithmic scaling)
+                // Smaller sizes need fewer levels, larger sizes benefit from more
+                let maxLevels;
+                if (size === 1) {
+                    maxLevels = 1;
+                } else {
+                    // Scale logarithmically: ~3 levels at size 6, ~5 at size 10, ~10 at size 100
+                    maxLevels = Math.min(10, Math.max(2, Math.ceil(Math.log2(size) * 1.5)));
+                }
 
                 for (let y = 0; y < size; y++) {
                     pattern[y] = [];
                     for (let x = 0; x < size; x++) {
-                        // Calculate distance from each edge
-                        const distFromLeft = x;
-                        const distFromRight = size - 1 - x;
-                        const distFromTop = y;
-                        const distFromBottom = size - 1 - y;
+                        // Calculate Euclidean distance from center
+                        const dx = x - centerX;
+                        const dy = y - centerY;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
                         
-                        // Minimum distance to any edge
-                        const distX = Math.min(distFromLeft, distFromRight);
-                        const distY = Math.min(distFromTop, distFromBottom);
-                        const minDist = Math.min(distX, distY);
-                        const maxDist = Math.max(distX, distY);
+                        // Normalize distance (0 = center, 1 = corner)
+                        const normalizedDist = distance / maxDistance;
                         
+                        // Logarithmic level assignment (each ring is 1/3 of the remaining radius)
+                        // Level 1: 0-33.3%, Level 2: 33.3-55.6%, Level 3: 55.6-70.4%, etc.
+                        // Formula based on: distance = 1 - (2/3)^level
+                        // Solving for level: level = ln(1 - distance) / ln(2/3)
                         let level;
-                        
-                        if (size <= 2) {
-                            // Sizes 1-2: All pixels are level 1
+                        if (normalizedDist >= 0.9999) {
+                            // Corner pixels: assign to max level
+                            level = maxLevels;
+                        } else if (normalizedDist < 0.0001) {
+                            // Center pixel
                             level = 1;
-                        } else if (size <= 4) {
-                            // Sizes 3-4: Only use levels 1 and 2
-                            if (minDist == 0) {
-                                // On edge
-                                level = 2;
-                            } else {
-                                level = 1;
-                            }
-                        } else if (size <= 6) {
-                            // Sizes 5-6: Use levels 1, 2, 3 (no level 4)
-                            if (minDist == 0) {
-                                // On edge
-                                if (maxDist == 0) {
-                                    // Corner
-                                    level = 3;
-                                } else if (maxDist == 1) {
-                                    // 1 pixel from corner on edge
-                                    level = 2;
-                                } else {
-                                    // Far from corner on edge
-                                    level = 1;
-                                }
-                            } else {
-                                // Inner pixels
-                                level = 1;
-                            }
                         } else {
-                            // Size 7+: Use all 4 levels
-                            if (minDist == 0) {
-                                // On an edge
-                                if (maxDist == 0) {
-                                    // Corner pixel
-                                    level = 4;
-                                } else if (maxDist <= 2) {
-                                    // Within 2 pixels of corner on edge
-                                    level = 3;
-                                } else {
-                                    // Far from corner on edge
-                                    level = 2;
-                                }
-                            } else if (minDist == 1) {
-                                // 1 pixel from edge
-                                if (maxDist <= 1) {
-                                    // Diagonal from corner
-                                    level = 2;
-                                } else {
-                                    // Further from corner
-                                    level = 1;
-                                }
-                            } else {
-                                // 2+ pixels from all edges (center area)
-                                level = 1;
-                            }
+                            // Formula: level = ln(1 - distance) / ln(2/3)
+                            level = Math.floor(Math.log(1 - normalizedDist) / Math.log(2/3)) + 1;
+                            level = Math.min(maxLevels, Math.max(1, level)); // Clamp to [1, maxLevels]
                         }
                         
-                        // Calculate intensity: level 1 = 100%, level N = diffusion^(N-1)
-                        const intensity = Math.pow(this.diffusionStrength, level - 1);
+                        // Calculate intensity with HYBRID approach:
+                        // Inner 1/3 of levels: linear interpolation from 100% to diffusion
+                        // Outer 2/3 of levels: exponential decay continuing from diffusion
+                        const linearLevels = maxLevels === 1 ? 1 : Math.max(2, Math.floor(maxLevels / 3));
+                        
+                        let intensity;
+                        if (level <= linearLevels) {
+                            // Linear interpolation for inner rings
+                            if (linearLevels === 1) {
+                                intensity = 1.0;
+                            } else {
+                                // Level 1 = 100%, level linearLevels = diffusion strength
+                                intensity = 1.0 - ((level - 1) * (1.0 - this.diffusionStrength) / (linearLevels - 1));
+                            }
+                        } else {
+                            // Exponential decay for outer rings
+                            // Continue from where linear left off (at diffusion strength)
+                            // Level linearLevels+1 = diffusion^2, linearLevels+2 = diffusion^3, etc.
+                            intensity = Math.pow(this.diffusionStrength, level - linearLevels + 1);
+                        }
                         
                         pattern[y][x] = intensity;
                     }
