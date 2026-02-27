@@ -16,6 +16,10 @@ Most characters will be 3 pixels wide, but certain characters like G and M and &
 
 I will continue adding characters to fonts as I have time. If you wish your language to be a priority or if you need some certain characters added, open an issue and I'll see what I can do.
 
+## Previews
+
+Instead of updating fonts continuously on this page, try out the [BDF Font Renderer](https://trip5.github.io/Matrix-Fonts/renderer.html)!
+
 ---
 
 ## 8-Series Fonts
@@ -353,6 +357,7 @@ Please note that yoffset can be tricky.  You should use a number that correspond
 
 | Date       | Release Notes    |
 | ---------- | ---------------- |
+| 2026.02.27 | Font renderer added |
 | 2026.02.20 | Unknown characters added to Light fonts, "Character substiutions" removed from all, minor fixes to many glyphs |
 | 2025.05.25 | Minor fixes to Korean, Chinese, ESPHome now works with BDF |
 | 2024.10.09 | Vietnamese and IPA added to 8-series |

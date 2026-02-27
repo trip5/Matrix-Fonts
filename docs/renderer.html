@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BDF Font Renderer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+        h1 {
+            color: #22B14C;
+            text-align: center;
+        }
+        .container {
+            background: #2a2a2a;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .color-preview {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .color-swatch {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #666;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .control-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .control-group.full-width {
+            grid-column: 1 / -1;
+        }
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #00A2E8;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="color"],
+        textarea,
+        select {
+            padding: 8px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            background: #383838;
+            color: #e0e0e0;
+            font-size: 14px;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+            font-family: monospace;
+        }
+        input[type="file"] {
+            padding: 8px;
+            background: #383838;
+            border: 1px solid #444;
+            border-radius: 4px;
+            color: #e0e0e0;
+            cursor: pointer;
+        }
+        button {
+            padding: 12px 24px;
+            background: #22B14C;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #2AC157;
+        }
+        button:disabled {
+            background: #666;
+            cursor: not-allowed;
+        }
+        .canvas-container {
+            background: #383838;
+            border: 2px solid #444;
+            border-radius: 4px;
+            padding: 20px;
+            text-align: center;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        canvas {
+            max-width: 100%;
+            height: auto;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+        }
+        .info {
+            background: #333;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #aaa;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 5px;
+        }
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>BDF Font Renderer</h1>
+    
+    <div class="container">
+        <h2>Settings</h2>
+        <div class="controls">
+            <div class="control-group full-width">
+                <label for="fontSelect">Select Matrix Font:</label>
+                <select id="fontSelect">
+                    <option value="">-- Choose a font --</option>
+                    <optgroup label="6-Series">
+                        <option value="6-series/MatrixChunky6.bdf">MatrixChunky6</option>
+                        <option value="6-series/MatrixChunky6X.bdf">MatrixChunky6X</option>
+                        <option value="6-series/MatrixLight6.bdf">MatrixLight6</option>
+                        <option value="6-series/MatrixLight6X.bdf">MatrixLight6X</option>
+                    </optgroup>
+                    <optgroup label="8-Series">
+                        <option value="8-series/MatrixChunky8.bdf">MatrixChunky8</option>
+                        <option value="8-series/MatrixChunky8X.bdf">MatrixChunky8X</option>
+                        <option value="8-series/MatrixLight8.bdf">MatrixLight8</option>
+                        <option value="8-series/MatrixLight8X.bdf">MatrixLight8X</option>
+                    </optgroup>
+                </select>
+            </div>
+            
+            <div class="control-group full-width">
+                <label for="bdfFile">Or Upload BDF Font File:</label>
+                <input type="file" id="bdfFile" accept=".bdf" />
+                <div class="info" id="fontInfo">Select from dropdown or upload a BDF file</div>
+            </div>
+            
+            <div class="control-group full-width">
+                <label for="textInput">Text to Render (leave empty for all characters):</label>
+                <textarea id="textInput" placeholder="Enter text here..."></textarea>
+            </div>
+            
+            <div class="control-group">
+                <label for="pixelColor">Pixel Color:</label>
+                <div class="color-preview">
+                    <input type="color" id="pixelColor" value="#000000" />
+                    <div class="color-swatch" id="colorSwatch" style="background-color: #000000;"></div>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <label for="bgColor">Background Color:</label>
+                <div class="color-preview">
+                    <input type="color" id="bgColor" value="#ffffff" />
+                    <div class="color-swatch" id="bgSwatch" style="background-color: #ffffff;"></div>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <label for="pixelSize">Pixel Size (1-18):</label>
+                <input type="number" id="pixelSize" min="1" max="18" value="5" />
+            </div>
+
+            <div class="control-group">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="transparentBg" />
+                    <label for="transparentBg" style="margin: 0;">Transparent Background</label>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <label for="pixelSpacing">Pixel Spacing:</label>
+                <input type="number" id="pixelSpacing" min="0" max="100" value="0" />
+            </div>
+
+            <div class="control-group">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="blankBetweenLines" checked />
+                    <label for="blankBetweenLines" style="margin: 0;">Add Blank Between Lines</label>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <label for="diffusionStrength">Diffusion Strength (0.0-1.0):</label>
+                <input type="number" id="diffusionStrength" min="0" max="1" step="0.05" value="0.95" />
+            </div>
+
+            <div class="control-group">
+                <label for="renderedMaxWidth">Rendered Image Max Width (0 = unlimited):</label>
+                <input type="number" id="renderedMaxWidth" min="0" value="1200" />
+            </div>
+            
+           
+            <div class="control-group full-width">
+                <button id="renderBtn" onclick="renderImage()" disabled>🎨 Render PNG</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h2>Preview</h2>
+        <div class="canvas-container">
+            <canvas id="canvas"></canvas>
+        </div>
+        <div class="info" id="renderInfo">Click "Render PNG" to generate image</div>
+        <button id="downloadBtn" onclick="downloadImage()" style="margin-top: 15px; width: 100%;" disabled>
+            ⬇️ Download PNG
+        </button>
+    </div>
+
+    <script>
+        let bdfFont = null;
+        let renderTimeout = null;
+
+        // Debounced auto-render function
+        function autoRender() {
+            if (bdfFont) {
+                // Clear any existing timeout
+                if (renderTimeout) {
+                    clearTimeout(renderTimeout);
+                }
+                // Set new timeout to render after 500ms of inactivity
+                renderTimeout = setTimeout(function() {
+                    renderImage();
+                }, 500);
+            }
+        }
+
+        // BDF Font Parser
+        class BDFParser {
+            constructor(bdfContent) {
+                this.content = bdfContent;
+                this.chars = new Map();
+                this.properties = {};
+                this.parse();
+            }
+
+            parse() {
+                const lines = this.content.split('\n');
+                let i = 0;
+                
+                // Parse header
+                while (i < lines.length && !lines[i].startsWith('CHARS ')) {
+                    const line = lines[i].trim();
+                    if (line.startsWith('FONT ')) {
+                        this.properties.fontName = line.substring(5);
+                    } else if (line.startsWith('SIZE ')) {
+                        const parts = line.split(' ');
+                        this.properties.size = parseInt(parts[1]);
+                    } else if (line.startsWith('FONTBOUNDINGBOX ')) {
+                        const parts = line.split(' ');
+                        this.properties.bbx = {
+                            width: parseInt(parts[1]),
+                            height: parseInt(parts[2]),
+                            xoff: parseInt(parts[3]),
+                            yoff: parseInt(parts[4])
+                        };
+                    }
+                    i++;
+                }
+                
+                // Parse characters
+                while (i < lines.length) {
+                    if (lines[i].startsWith('STARTCHAR ')) {
+                        const char = this.parseChar(lines, i);
+                        if (char) {
+                            this.chars.set(char.encoding, char);
+                        }
+                        // Skip to next character
+                        while (i < lines.length && !lines[i].startsWith('ENDCHAR')) {
+                            i++;
+                        }
+                    }
+                    i++;
+                }
+            }
+
+            parseChar(lines, startIndex) {
+                let i = startIndex;
+                const char = {
+                    name: lines[i].substring(10).trim(),
+                    encoding: -1,
+                    swidth: [0, 0],
+                    dwidth: [0, 0],
+                    bbx: { width: 0, height: 0, xoff: 0, yoff: 0 },
+                    bitmap: []
+                };
+
+                i++;
+                while (i < lines.length && !lines[i].startsWith('BITMAP')) {
+                    const line = lines[i].trim();
+                    if (line.startsWith('ENCODING ')) {
+                        char.encoding = parseInt(line.substring(9));
+                    } else if (line.startsWith('DWIDTH ')) {
+                        const parts = line.split(' ');
+                        char.dwidth = [parseInt(parts[1]), parseInt(parts[2])];
+                    } else if (line.startsWith('BBX ')) {
+                        const parts = line.split(' ');
+                        char.bbx = {
+                            width: parseInt(parts[1]),
+                            height: parseInt(parts[2]),
+                            xoff: parseInt(parts[3]),
+                            yoff: parseInt(parts[4])
+                        };
+                    }
+                    i++;
+                }
+
+                // Parse bitmap
+                i++; // Skip BITMAP line
+                while (i < lines.length && !lines[i].startsWith('ENDCHAR')) {
+                    const line = lines[i].trim();
+                    if (line && line !== '') {
+                        char.bitmap.push(line);
+                    }
+                    i++;
+                }
+
+                return char.encoding >= 0 ? char : null;
+            }
+
+            getChar(code) {
+                return this.chars.get(code);
+            }
+
+            getAllChars() {
+                return Array.from(this.chars.values()).sort((a, b) => a.encoding - b.encoding);
+            }
+
+            hexToBitArray(hex, width) {
+                const value = parseInt(hex, 16);
+                const bits = [];
+                // BDF format uses leftmost bits, so we need to calculate
+                // how many bits the hex value represents (multiple of 4)
+                const hexBits = hex.length * 4;
+                // Start from the leftmost bit position
+                for (let i = 0; i < width; i++) {
+                    const bitPos = hexBits - 1 - i;
+                    bits.push((value & (1 << bitPos)) ? 1 : 0);
+                }
+                return bits;
+            }
+        }
+
+        // LED Renderer
+        class LEDRenderer {
+            constructor(pixelSize, color, diffusionStrength) {
+                this.pixelSize = Math.max(1, Math.min(18, pixelSize));
+                this.color = this.hexToRgb(color);
+                this.diffusionStrength = diffusionStrength;
+                this.ledPattern = this.createLEDPattern();
+            }
+
+            hexToRgb(hex) {
+                const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+                return result ? {
+                    r: parseInt(result[1], 16),
+                    g: parseInt(result[2], 16),
+                    b: parseInt(result[3], 16)
+                } : { r: 255, g: 30, b: 39 };
+            }
+
+            createLEDPattern() {
+                const size = this.pixelSize;
+                const pattern = [];
+
+                for (let y = 0; y < size; y++) {
+                    pattern[y] = [];
+                    for (let x = 0; x < size; x++) {
+                        // Calculate distance from each edge
+                        const distFromLeft = x;
+                        const distFromRight = size - 1 - x;
+                        const distFromTop = y;
+                        const distFromBottom = size - 1 - y;
+                        
+                        // Minimum distance to any edge
+                        const distX = Math.min(distFromLeft, distFromRight);
+                        const distY = Math.min(distFromTop, distFromBottom);
+                        const minDist = Math.min(distX, distY);
+                        const maxDist = Math.max(distX, distY);
+                        
+                        let level;
+                        
+                        if (size <= 2) {
+                            // Sizes 1-2: All pixels are level 1
+                            level = 1;
+                        } else if (size <= 4) {
+                            // Sizes 3-4: Only use levels 1 and 2
+                            if (minDist == 0) {
+                                // On edge
+                                level = 2;
+                            } else {
+                                level = 1;
+                            }
+                        } else if (size <= 6) {
+                            // Sizes 5-6: Use levels 1, 2, 3 (no level 4)
+                            if (minDist == 0) {
+                                // On edge
+                                if (maxDist == 0) {
+                                    // Corner
+                                    level = 3;
+                                } else if (maxDist == 1) {
+                                    // 1 pixel from corner on edge
+                                    level = 2;
+                                } else {
+                                    // Far from corner on edge
+                                    level = 1;
+                                }
+                            } else {
+                                // Inner pixels
+                                level = 1;
+                            }
+                        } else {
+                            // Size 7+: Use all 4 levels
+                            if (minDist == 0) {
+                                // On an edge
+                                if (maxDist == 0) {
+                                    // Corner pixel
+                                    level = 4;
+                                } else if (maxDist <= 2) {
+                                    // Within 2 pixels of corner on edge
+                                    level = 3;
+                                } else {
+                                    // Far from corner on edge
+                                    level = 2;
+                                }
+                            } else if (minDist == 1) {
+                                // 1 pixel from edge
+                                if (maxDist <= 1) {
+                                    // Diagonal from corner
+                                    level = 2;
+                                } else {
+                                    // Further from corner
+                                    level = 1;
+                                }
+                            } else {
+                                // 2+ pixels from all edges (center area)
+                                level = 1;
+                            }
+                        }
+                        
+                        // Calculate intensity: level 1 = 100%, level N = diffusion^(N-1)
+                        const intensity = Math.pow(this.diffusionStrength, level - 1);
+                        
+                        pattern[y][x] = intensity;
+                    }
+                }
+
+                return pattern;
+            }
+
+            renderPixel(imageData, canvasX, canvasY, canvasWidth) {
+                for (let py = 0; py < this.pixelSize; py++) {
+                    for (let px = 0; px < this.pixelSize; px++) {
+                        const x = canvasX + px;
+                        const y = canvasY + py;
+                        const intensity = this.ledPattern[py][px];
+                        
+                        if (intensity > 0) {
+                            const idx = (y * canvasWidth + x) * 4;
+                            imageData.data[idx] = this.color.r * intensity;
+                            imageData.data[idx + 1] = this.color.g * intensity;
+                            imageData.data[idx + 2] = this.color.b * intensity;
+                            imageData.data[idx + 3] = 255 * Math.min(1, intensity * 1.5);
+                        }
+                    }
+                }
+            }
+        }
+
+        // Font selection from dropdown
+        document.getElementById('fontSelect').addEventListener('change', function(e) {
+            const fontPath = e.target.value;
+            if (fontPath) {
+                // Clear file input
+                document.getElementById('bdfFile').value = '';
+                
+                document.getElementById('fontInfo').textContent = 'Loading font...';
+                fetch(fontPath)
+                    .then(response => {
+                        if (!response.ok) throw new Error('Font file not found');
+                        return response.text();
+                    })
+                    .then(bdfContent => {
+                        try {
+                            bdfFont = new BDFParser(bdfContent);
+                            document.getElementById('fontInfo').textContent = 
+                                `✓ Loaded: ${bdfFont.properties.fontName || 'Unknown'} ` +
+                                `(${bdfFont.chars.size} characters)`;
+                            document.getElementById('renderBtn').disabled = false;
+                            autoRender(); // Auto-render on font load
+                        } catch (error) {
+                            document.getElementById('fontInfo').textContent = 
+                                `✗ Error parsing font: ${error.message}`;
+                            console.error(error);
+                        }
+                    })
+                    .catch(error => {
+                        document.getElementById('fontInfo').textContent = 
+                            `✗ Error loading font: ${error.message}. Try uploading the file instead.`;
+                        console.error(error);
+                    });
+            }
+        });
+
+        // Font upload
+        document.getElementById('bdfFile').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                // Clear dropdown selection
+                document.getElementById('fontSelect').value = '';
+                
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    try {
+                        bdfFont = new BDFParser(event.target.result);
+                        document.getElementById('fontInfo').textContent = 
+                            `✓ Loaded: ${bdfFont.properties.fontName || 'Unknown'} ` +
+                            `(${bdfFont.chars.size} characters)`;
+                        document.getElementById('renderBtn').disabled = false;
+                        autoRender(); // Auto-render on font load
+                    } catch (error) {
+                        document.getElementById('fontInfo').textContent = 
+                            `✗ Error parsing font: ${error.message}`;
+                        console.error(error);
+                    }
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        // Color previews
+        document.getElementById('pixelColor').addEventListener('input', function(e) {
+            document.getElementById('colorSwatch').style.backgroundColor = e.target.value;
+            autoRender();
+        });
+        
+        document.getElementById('bgColor').addEventListener('input', function(e) {
+            document.getElementById('bgSwatch').style.backgroundColor = e.target.value;
+            autoRender();
+        });
+        
+        // Auto-render on any input change
+        document.getElementById('textInput').addEventListener('input', autoRender);
+        document.getElementById('pixelSize').addEventListener('input', autoRender);
+        document.getElementById('pixelSpacing').addEventListener('input', autoRender);
+        document.getElementById('diffusionStrength').addEventListener('input', autoRender);
+        document.getElementById('renderedMaxWidth').addEventListener('input', autoRender);
+        document.getElementById('transparentBg').addEventListener('change', autoRender);
+        document.getElementById('blankBetweenLines').addEventListener('change', autoRender);
+
+        function renderImage() {
+            if (!bdfFont) {
+                alert('Please load a BDF font first!');
+                return;
+            }
+
+            const text = document.getElementById('textInput').value;
+            const pixelSize = parseInt(document.getElementById('pixelSize').value);
+            const pixelColor = document.getElementById('pixelColor').value;
+            const pixelSpacing = parseInt(document.getElementById('pixelSpacing').value);
+            const renderedMaxWidth = parseInt(document.getElementById('renderedMaxWidth').value);
+            const diffusionStrength = parseFloat(document.getElementById('diffusionStrength').value);
+            const blankBetweenLines = document.getElementById('blankBetweenLines').checked;
+            const bgColor = document.getElementById('bgColor').value;
+            const transparentBg = document.getElementById('transparentBg').checked;
+            
+            // Calculate rendered pixel width (how much space each BDF pixel takes in final PNG)
+            const renderedPixelWidth = pixelSize + pixelSpacing;
+
+            // Determine what to render
+            let renderText;
+            if (text.trim() === '') {
+                // Render ALL characters from the BDF file
+                const allChars = bdfFont.getAllChars();
+                renderText = allChars
+                    .map(c => String.fromCharCode(c.encoding))
+                    .join('');
+                console.log(`Rendering all ${allChars.length} characters from BDF file`);
+            } else {
+                renderText = text;
+            }
+
+            // Wrap text if needed
+            let lines = [];
+            if (renderedMaxWidth > 0 && renderedMaxWidth >= 100) {
+                // Wrap by rendered pixel width (final PNG width)
+                // Calculate max BDF pixels that fit: (maxWidth - 2 borders - initial spacer) / renderedPixelWidth
+                const maxBdfPixels = Math.floor((renderedMaxWidth - 2 - pixelSpacing) / renderedPixelWidth);
+                
+                let currentLine = '';
+                let currentWidth = 0;
+                
+                for (let i = 0; i < renderText.length; i++) {
+                    const char = renderText[i];
+                    
+                    // Handle explicit newlines
+                    if (char === '\n') {
+                        lines.push(currentLine);
+                        currentLine = '';
+                        currentWidth = 0;
+                        continue;
+                    }
+                    
+                    const code = char.charCodeAt(0);
+                    const charData = bdfFont.getChar(code);
+                    
+                    if (charData) {
+                        const charWidth = charData.dwidth[0];
+                        
+                        // If adding this character exceeds the limit and we have content, wrap
+                        if (currentWidth + charWidth > maxBdfPixels && currentLine.length > 0) {
+                            lines.push(currentLine);
+                            currentLine = char;
+                            currentWidth = charWidth;
+                        } else {
+                            currentLine += char;
+                            currentWidth += charWidth;
+                        }
+                    } else {
+                        // Character not in font, skip it
+                        currentLine += char;
+                    }
+                }
+                
+                // Add remaining line
+                if (currentLine.length > 0) {
+                    lines.push(currentLine);
+                }
+            } else if (renderText.includes('\n')) {
+                // No wrapping but respect explicit newlines
+                lines = renderText.split('\n');
+            } else {
+                // No wrapping at all
+                lines = [renderText];
+            }
+
+            // Calculate dimensions
+            const renderer = new LEDRenderer(pixelSize, pixelColor, diffusionStrength);
+            let maxWidth = 0;
+            const lineWidths = [];
+
+            for (const line of lines) {
+                let lineWidth = 0;
+                for (let i = 0; i < line.length; i++) {
+                    const code = line.charCodeAt(i);
+                    const char = bdfFont.getChar(code);
+                    if (char) {
+                        lineWidth += char.dwidth[0];
+                    }
+                }
+                lineWidths.push(lineWidth);
+                maxWidth = Math.max(maxWidth, lineWidth);
+            }
+
+            const fontHeight = bdfFont.properties.bbx.height;
+            let totalHeight = lines.length * fontHeight;
+            
+            // Add blank lines between text lines if enabled (just 1 PNG pixel per blank)
+            if (blankBetweenLines && lines.length > 1) {
+                totalHeight += (lines.length - 1); // Add 1 BDF pixel height per gap
+            }
+
+            // Calculate canvas size
+            // Add 1 transparent pixel border on all sides
+            // If pixel spacing > 0, add that many pixels between each BDF pixel
+            let canvasWidth, canvasHeight;
+            
+            if (pixelSpacing > 0) {
+                // With spacing: pixelSpacing pixels before each BDF pixel + the pixel itself
+                // Formula: (numPixels * (pixelSize + spacing) + spacing) + 2 for borders
+                canvasWidth = (maxWidth * (pixelSize + pixelSpacing) + pixelSpacing) + 2;
+                canvasHeight = (totalHeight * (pixelSize + pixelSpacing) + pixelSpacing) + 2;
+            } else {
+                // Without spacing: just the pixels
+                canvasWidth = (maxWidth * pixelSize) + 2;
+                canvasHeight = (totalHeight * pixelSize) + 2;
+            }
+
+            // Create canvas
+            const canvas = document.getElementById('canvas');
+            canvas.width = canvasWidth;
+            canvas.height = canvasHeight;
+            const ctx = canvas.getContext('2d');
+
+            // Clear with transparency or background color
+            ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+            const imageData = ctx.createImageData(canvasWidth, canvasHeight);
+            
+            // Fill with background color if not transparent
+            if (!transparentBg) {
+                const bgRgb = renderer.hexToRgb(bgColor);
+                for (let i = 0; i < imageData.data.length; i += 4) {
+                    imageData.data[i] = bgRgb.r;
+                    imageData.data[i + 1] = bgRgb.g;
+                    imageData.data[i + 2] = bgRgb.b;
+                    imageData.data[i + 3] = 255;
+                }
+            }
+
+            // Render each line
+            let currentY = 1; // Start after top 1-pixel border
+
+            for (let lineIdx = 0; lineIdx < lines.length; lineIdx++) {
+                const line = lines[lineIdx];
+                let currentX = 1; // Start after left 1-pixel border
+
+                for (let i = 0; i < line.length; i++) {
+                    const code = line.charCodeAt(i);
+                    const char = bdfFont.getChar(code);
+                    
+                    if (char && char.bitmap.length > 0) {
+                        const bbx = char.bbx;
+                        
+                        // Render character bitmap
+                        for (let row = 0; row < char.bitmap.length; row++) {
+                            const hexLine = char.bitmap[row];
+                            const bits = bdfFont.hexToBitArray(hexLine, bbx.width);
+                            
+                            for (let col = 0; col < bits.length; col++) {
+                                if (bits[col]) {
+                                    const bdfPixelX = col + bbx.xoff;
+                                    const bdfPixelY = fontHeight - bbx.height - bbx.yoff + row;
+                                    
+                                    let pixelX, pixelY;
+                                    if (pixelSpacing > 0) {
+                                        // With spacing: add spacing pixels before each BDF pixel
+                                        pixelX = currentX + bdfPixelX * (pixelSize + pixelSpacing) + pixelSpacing;
+                                        pixelY = currentY + bdfPixelY * (pixelSize + pixelSpacing) + pixelSpacing;
+                                    } else {
+                                        // Without spacing: render normally
+                                        pixelX = currentX + bdfPixelX * pixelSize;
+                                        pixelY = currentY + bdfPixelY * pixelSize;
+                                    }
+                                    
+                                    renderer.renderPixel(imageData, pixelX, pixelY, canvasWidth);
+                                }
+                            }
+                        }
+                        
+                        if (pixelSpacing > 0) {
+                            currentX += char.dwidth[0] * (pixelSize + pixelSpacing);
+                        } else {
+                            currentX += char.dwidth[0] * pixelSize;
+                        }
+                    }
+                }
+
+                if (pixelSpacing > 0) {
+                    currentY += fontHeight * (pixelSize + pixelSpacing);
+                } else {
+                    currentY += fontHeight * pixelSize;
+                }
+                
+                // Add blank line if enabled (and not the last line) - just 1 pixel row
+                if (blankBetweenLines && lineIdx < lines.length - 1) {
+                    if (pixelSpacing > 0) {
+                        currentY += (pixelSize + pixelSpacing); // 1 BDF pixel = this many PNG pixels
+                    } else {
+                        currentY += pixelSize;
+                    }
+                }
+            }
+
+            ctx.putImageData(imageData, 0, 0);
+
+            document.getElementById('renderInfo').textContent = 
+                `✓ Rendered: ${canvasWidth}x${canvasHeight}px ` +
+                `(${lines.length} line${lines.length > 1 ? 's' : ''}, ` +
+                `${renderText.length} character${renderText.length > 1 ? 's' : ''})`;
+            
+            document.getElementById('downloadBtn').disabled = false;
+        }
+
+        function downloadImage() {
+            const canvas = document.getElementById('canvas');
+            const link = document.createElement('a');
+            const text = document.getElementById('textInput').value.substring(0, 20).replace(/[^a-zA-Z0-9]/g, '_') || 'all_chars';
+            link.download = `bdf-led-${text}-${Date.now()}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+    </script>
+</body>
+</html>

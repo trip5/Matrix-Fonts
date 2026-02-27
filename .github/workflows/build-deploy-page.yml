@@ -1,0 +1,76 @@
+
+name: Build and Deploy GitHub Page
+
+on:
+  workflow_run:
+    workflows: ["Build and Release Firmware"]
+    types:
+      - completed
+  push:
+    branches: [ '**' ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install mkdocs-material
+
+      - name: Copy README and images to docs
+        run: |
+          cp README.md docs/index.md
+          cp -r images docs/
+
+      - name: Update GitHub link in documentation index
+        run: |
+          # Replace only the first occurrence of 'Github Page' with 'Github Repository'
+          sed -i '0,/Github Page/s|Github Page|Github Repository|' docs/index.md
+          # Replace only the first occurrence of the link after that phrase with the correct repo link
+          sed -i "0,/(https:\/\/[^)]*)/s|(https://[^)]*)|(https://github.com/${{ github.repository }})|" docs/index.md
+          # Replace only the first occurrence of 'easier to read' with 'easier to explore'
+          sed -i '0,/easier to read/s|easier to read|easier to explore|' docs/index.md
+
+      - name: Convert relative YAML links to GitHub URLs
+        run: |
+          sed -i 's|](\([^:)]*\.yaml\))|](https://github.com/trip5/Matrix-Fonts/blob/main/\1)|g' docs/index.md
+
+      - name: Copy BDF font files to docs
+        run: |
+          cp -r 6-series docs/
+          cp -r 8-series docs/
+
+      - name: Build documentation
+        run: mkdocs build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build-deploy
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

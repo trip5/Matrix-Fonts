@@ -1,0 +1,64 @@
+site_name: Matrix Fonts
+site_description: Fonts for LED Matrix displays with 6 or 8 pixel-height displays
+site_url: https://trip5.github.io/Matrix-Fonts/
+repo_url: https://github.com/trip5/Matrix-Fonts
+repo_name: trip5/Matrix-Fonts
+
+theme:
+  name: material
+  favicon: images/favicon.png
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - toc.follow
+  palette:
+    # Light mode
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+markdown_extensions:
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: trip5
+      repo: Matrix-Fonts
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+      toc_depth: 3
+
+# Single page site, no need for navigation menu
+# nav:
+#   - Home: index.md
+
+plugins:
+  - search
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/trip5
