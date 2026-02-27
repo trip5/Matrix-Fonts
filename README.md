@@ -10,17 +10,18 @@ These fonts are designed with LED Matrix Clocks in mind, especially a unit that 
 
 Because these are bitmap fonts, the size of these fonts is pixel-fixed. They are not resizable. This is a good thing.
 
-These TTF files are not usable by Windows, since they include only bitmaps. They are also not very useful when editing the font. So the BDF files will always be considered as master files.
+These TTF files are not usable by Windows, since they include only bitmaps.
 
 Most characters will be 3 pixels wide, but certain characters like G and M and & are wider. Punctuation characters are generally 1 or 2 pixels wide. All characters have 1 empty column on the right side, except the space which is exactly 2 pixels, certain unicode hyphens, and perhaps some Ognok-accented Latin characters.
 
-I will continue adding characters to fonts as I have time. If you wish your language to be a priority or if you need some certain characters added, open an issue and I'll see what I can do.
+I will continue adding characters to fonts as I have time. If you wish your language to be represented or if you need some special characters added, open an issue and I'll see what I can do.
 
 ## Previews
 
-Instead of updating fonts continuously on this page, try out the [BDF Font Renderer](https://trip5.github.io/Matrix-Fonts/renderer.html)!
+If you would like to see all available characters, take a look at my [BDF Font Renderer](https://trip5.github.io/Matrix-Fonts/renderer.html).
 
-The fonts can surely display more than:
+This tool was used to generate the previews with:
+
 ```
 ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz
 !"#$%&'()*+,-./0123456789:;<=>?@[\]^_`{|}~

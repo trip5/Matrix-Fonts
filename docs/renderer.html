@@ -170,6 +170,27 @@
                 <textarea id="textInput" placeholder="Enter text here..."></textarea>
             </div>
             
+            <div class="control-group full-width">
+                <div style="display: flex; gap: 20px;">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="normalText" checked />
+                        <label for="normalText" style="margin: 0;">Normal Text</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="centeredText" />
+                        <label for="centeredText" style="margin: 0;">Centered Text</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="justifiedText" />
+                        <label for="justifiedText" style="margin: 0;">Justified Text</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="fullJustifiedText" />
+                        <label for="fullJustifiedText" style="margin: 0;">Full Justification</label>
+                    </div>
+                </div>
+            </div>
+            
             <div class="control-group">
                 <label for="pixelColor">Pixel Color:</label>
                 <div class="color-preview">
@@ -578,12 +599,31 @@
         document.getElementById('renderedMaxWidth').addEventListener('input', autoRender);
         document.getElementById('transparentBg').addEventListener('change', autoRender);
         document.getElementById('blankBetweenLines').addEventListener('change', autoRender);
+        
+        // Text alignment - make them mutually exclusive
+        const alignmentBoxes = ['normalText', 'centeredText', 'justifiedText', 'fullJustifiedText'];
+        alignmentBoxes.forEach(id => {
+            document.getElementById(id).addEventListener('change', function() {
+                if (this.checked) {
+                    alignmentBoxes.forEach(otherId => {
+                        if (otherId !== id) {
+                            document.getElementById(otherId).checked = false;
+                        }
+                    });
+                    autoRender();
+                }
+            });
+        });
 
         function renderImage() {
             if (!bdfFont) {
                 alert('Please load a BDF font first!');
                 return;
             }
+            
+            const isCentered = document.getElementById('centeredText').checked;
+            const isJustified = document.getElementById('justifiedText').checked;
+            const isFullJustified = document.getElementById('fullJustifiedText').checked;
 
             const text = document.getElementById('textInput').value;
             const pixelSize = parseInt(document.getElementById('pixelSize').value);
@@ -733,49 +773,100 @@
 
             for (let lineIdx = 0; lineIdx < lines.length; lineIdx++) {
                 const line = lines[lineIdx];
-                let currentX = 1; // Start after left 1-pixel border
-
+                const lineWidth = lineWidths[lineIdx];
+                
+                // Calculate starting X position based on alignment
+                let currentX = 1; // Default: start after left 1-pixel border
+                
+                if (isCentered && lineWidth < maxWidth) {
+                    // Center the line
+                    const offset = Math.floor((maxWidth - lineWidth) / 2);
+                    if (pixelSpacing > 0) {
+                        currentX += offset * (pixelSize + pixelSpacing);
+                    } else {
+                        currentX += offset * pixelSize;
+                    }
+                }
+                
+                // Calculate justification extra spacing
+                let extraSpacing = 0;
+                let accumulatedSpacing = 0;
+                let spaceIndices = [];
+                
+                if (isJustified && lineWidth < maxWidth && line.length > 1) {
+                    // Word-based justification: only add spacing at space characters
+                    for (let i = 0; i < line.length; i++) {
+                        if (line[i] === ' ') {
+                            spaceIndices.push(i);
+                        }
+                    }
+                    if (spaceIndices.length > 0) {
+                        extraSpacing = (maxWidth - lineWidth) / spaceIndices.length;
+                    }
+                } else if (isFullJustified && lineWidth < maxWidth && line.length > 1) {
+                    // Full justification: spread between all characters
+                    extraSpacing = (maxWidth - lineWidth) / (line.length - 1);
+                }
+                
+                // Render each character in the line
                 for (let i = 0; i < line.length; i++) {
                     const code = line.charCodeAt(i);
                     const char = bdfFont.getChar(code);
                     
-                    if (char && char.bitmap.length > 0) {
-                        const bbx = char.bbx;
+                    if (!char) continue;
+                    
+                    const bbx = char.bbx;
+                    
+                    // Calculate actual position including justification spacing
+                    let charX = currentX;
+                    if ((isJustified || isFullJustified) && extraSpacing > 0) {
+                        charX += Math.floor(accumulatedSpacing) * (pixelSpacing > 0 ? (pixelSize + pixelSpacing) : pixelSize);
+                    }
+                    
+                    // Render character bitmap
+                    for (let row = 0; row < char.bitmap.length; row++) {
+                        const hexLine = char.bitmap[row];
+                        const bits = bdfFont.hexToBitArray(hexLine, bbx.width);
                         
-                        // Render character bitmap
-                        for (let row = 0; row < char.bitmap.length; row++) {
-                            const hexLine = char.bitmap[row];
-                            const bits = bdfFont.hexToBitArray(hexLine, bbx.width);
-                            
-                            for (let col = 0; col < bits.length; col++) {
-                                if (bits[col]) {
-                                    const bdfPixelX = col + bbx.xoff;
-                                    const bdfPixelY = fontHeight - bbx.height - bbx.yoff + row;
-                                    
-                                    let pixelX, pixelY;
-                                    if (pixelSpacing > 0) {
-                                        // With spacing: add spacing pixels before each BDF pixel
-                                        pixelX = currentX + bdfPixelX * (pixelSize + pixelSpacing) + pixelSpacing;
-                                        pixelY = currentY + bdfPixelY * (pixelSize + pixelSpacing) + pixelSpacing;
-                                    } else {
-                                        // Without spacing: render normally
-                                        pixelX = currentX + bdfPixelX * pixelSize;
-                                        pixelY = currentY + bdfPixelY * pixelSize;
-                                    }
-                                    
-                                    renderer.renderPixel(imageData, pixelX, pixelY, canvasWidth);
+                        for (let col = 0; col < bits.length; col++) {
+                            if (bits[col]) {
+                                const bdfPixelX = col + bbx.xoff;
+                                const bdfPixelY = fontHeight - bbx.height - bbx.yoff + row;
+                                
+                                let pixelX, pixelY;
+                                if (pixelSpacing > 0) {
+                                    // With spacing: add spacing pixels before each BDF pixel
+                                    pixelX = charX + bdfPixelX * (pixelSize + pixelSpacing) + pixelSpacing;
+                                    pixelY = currentY + bdfPixelY * (pixelSize + pixelSpacing) + pixelSpacing;
+                                } else {
+                                    // Without spacing: render normally
+                                    pixelX = charX + bdfPixelX * pixelSize;
+                                    pixelY = currentY + bdfPixelY * pixelSize;
                                 }
+                                
+                                renderer.renderPixel(imageData, pixelX, pixelY, canvasWidth);
                             }
                         }
-                        
-                        if (pixelSpacing > 0) {
-                            currentX += char.dwidth[0] * (pixelSize + pixelSpacing);
-                        } else {
-                            currentX += char.dwidth[0] * pixelSize;
-                        }
+                    }
+                    
+                    // Advance X position by character width
+                    if (pixelSpacing > 0) {
+                        currentX += char.dwidth[0] * (pixelSize + pixelSpacing);
+                    } else {
+                        currentX += char.dwidth[0] * pixelSize;
+                    }
+                    
+                    // Accumulate justification spacing for next character
+                    if (isJustified && extraSpacing > 0 && line[i] === ' ') {
+                        // Word-based: only accumulate at spaces
+                        accumulatedSpacing += extraSpacing;
+                    } else if (isFullJustified && extraSpacing > 0 && i < line.length - 1) {
+                        // Full justification: accumulate for every character
+                        accumulatedSpacing += extraSpacing;
                     }
                 }
 
+                // Move to next line
                 if (pixelSpacing > 0) {
                     currentY += fontHeight * (pixelSize + pixelSpacing);
                 } else {
