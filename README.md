@@ -20,6 +20,14 @@ I will continue adding characters to fonts as I have time. If you wish your lang
 
 Instead of updating fonts continuously on this page, try out the [BDF Font Renderer](https://trip5.github.io/Matrix-Fonts/renderer.html)!
 
+The fonts can surely display more than:
+```
+ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz
+!"#$%&'()*+,-./0123456789:;<=>?@[\]^_`{|}~
+The quick brown fox jumps over the lazy dog.
+Съешь ещё этих мягких французских булок, да выпей чаю.
+```
+
 ---
 
 ## 8-Series Fonts

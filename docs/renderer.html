@@ -804,11 +804,19 @@
 
         function downloadImage() {
             const canvas = document.getElementById('canvas');
-            const link = document.createElement('a');
             const text = document.getElementById('textInput').value.substring(0, 20).replace(/[^a-zA-Z0-9]/g, '_') || 'all_chars';
-            link.download = `bdf-led-${text}-${Date.now()}.png`;
-            link.href = canvas.toDataURL('image/png');
-            link.click();
+            const filename = `bdf-led-${text}-${Date.now()}.png`;
+            
+            // Use toBlob for better compression
+            canvas.toBlob(function(blob) {
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.download = filename;
+                link.href = url;
+                link.click();
+                // Clean up the object URL after download
+                setTimeout(() => URL.revokeObjectURL(url), 100);
+            }, 'image/png');
         }
     </script>
 </body>
