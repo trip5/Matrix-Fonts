@@ -752,16 +752,30 @@
             const renderer = new LEDRenderer(pixelSize, pixelColor, diffusionStrength, bgColor, transparentBg);
             let maxWidth = 0;
             const lineWidths = [];
+            
+            // For centered/justified text, trim trailing space from last character
+            const trimLastChar = isCentered || isJustified || isFullJustified;
 
             for (const line of lines) {
                 let lineWidth = 0;
+                let lastCharData = null;
+                
                 for (let i = 0; i < line.length; i++) {
                     const code = line.charCodeAt(i);
                     const char = bdfFont.getChar(code);
                     if (char) {
                         lineWidth += char.dwidth[0];
+                        lastCharData = char;
                     }
                 }
+                
+                // Trim trailing space from last character if using centered/justified alignment
+                if (trimLastChar && lastCharData) {
+                    // Replace dwidth with actual glyph width for last character
+                    lineWidth -= lastCharData.dwidth[0];
+                    lineWidth += lastCharData.bbx.width + lastCharData.bbx.xoff;
+                }
+                
                 lineWidths.push(lineWidth);
                 maxWidth = Math.max(maxWidth, lineWidth);
             }

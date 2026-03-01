@@ -29,6 +29,8 @@ The quick brown fox jumps over the lazy dog.
 Съешь ещё этих мягких французских булок, да выпей чаю.
 ```
 
+There's a python version available too!
+
 ---
 
 ## 8-Series Fonts
@@ -366,7 +368,8 @@ Please note that yoffset can be tricky.  You should use a number that correspond
 
 | Date       | Release Notes    |
 | ---------- | ---------------- |
-| 2026.02.27 | Font renderer added, more minor fixes to many glyphs |
+| 2026.03.01 | Python tool added, tweaks to both renderers |
+| 2026.02.27 | Web renderer added, more minor fixes to many glyphs |
 | 2026.02.20 | Unknown characters added to Light fonts, "Character substiutions" removed from all, minor fixes to many glyphs |
 | 2025.05.25 | Minor fixes to Korean, Chinese, ESPHome now works with BDF |
 | 2024.10.09 | Vietnamese and IPA added to 8-series |
