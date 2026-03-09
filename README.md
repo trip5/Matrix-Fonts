@@ -368,6 +368,7 @@ Please note that yoffset can be tricky.  You should use a number that correspond
 
 | Date       | Release Notes    |
 | ---------- | ---------------- |
+| 2026.03.08 | Light8X: Minor fix to p and q, web renderer tweaked again |
 | 2026.03.01 | Python tool added, tweaks to both renderers |
 | 2026.02.27 | Web renderer added, more minor fixes to many glyphs |
 | 2026.02.20 | Unknown characters added to Light fonts, "Character substiutions" removed from all, minor fixes to many glyphs |

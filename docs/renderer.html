@@ -175,33 +175,48 @@
     </div>
     
     <div class="container">
+        <h2>Font Preview</h2>
+        <div class="controls">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 15px;">
+                <div class="control-group">
+                    <label for="fontSelect">Select Matrix Font:</label>
+                    <select id="fontSelect">
+                        <optgroup label="6-Series">
+                            <option value="6-series/MatrixChunky6.bdf" selected>MatrixChunky6</option>
+                            <option value="6-series/MatrixChunky6X.bdf">MatrixChunky6X</option>
+                            <option value="6-series/MatrixLight6.bdf">MatrixLight6</option>
+                            <option value="6-series/MatrixLight6X.bdf">MatrixLight6X</option>
+                        </optgroup>
+                        <optgroup label="8-Series">
+                            <option value="8-series/MatrixChunky8.bdf">MatrixChunky8</option>
+                            <option value="8-series/MatrixChunky8X.bdf">MatrixChunky8X</option>
+                            <option value="8-series/MatrixLight8.bdf">MatrixLight8</option>
+                            <option value="8-series/MatrixLight8X.bdf">MatrixLight8X</option>
+                        </optgroup>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="bdfFile">Or Upload BDF Font File:</label>
+                    <input type="file" id="bdfFile" accept=".bdf" />
+                </div>
+            </div>
+            
+            <div class="info" id="fontInfo" style="margin-bottom: 15px;">Select from dropdown or upload a BDF file</div>
+        </div>
+        
+        <div class="canvas-container">
+            <canvas id="canvas"></canvas>
+        </div>
+        <div class="info" id="renderInfo">Auto-rendering enabled - change any setting to update</div>
+        <button id="downloadBtn" onclick="downloadImage()" style="margin-top: 15px; width: 100%;" disabled>
+            ⬇️ Download PNG
+        </button>
+    </div>
+    
+    <div class="container">
         <h2>Settings</h2>
         <div class="controls">
-            <div class="control-group full-width">
-                <label for="fontSelect">Select Matrix Font:</label>
-                <select id="fontSelect">
-                    <option value="">-- Choose a font --</option>
-                    <optgroup label="6-Series">
-                        <option value="6-series/MatrixChunky6.bdf">MatrixChunky6</option>
-                        <option value="6-series/MatrixChunky6X.bdf">MatrixChunky6X</option>
-                        <option value="6-series/MatrixLight6.bdf">MatrixLight6</option>
-                        <option value="6-series/MatrixLight6X.bdf">MatrixLight6X</option>
-                    </optgroup>
-                    <optgroup label="8-Series">
-                        <option value="8-series/MatrixChunky8.bdf">MatrixChunky8</option>
-                        <option value="8-series/MatrixChunky8X.bdf">MatrixChunky8X</option>
-                        <option value="8-series/MatrixLight8.bdf">MatrixLight8</option>
-                        <option value="8-series/MatrixLight8X.bdf">MatrixLight8X</option>
-                    </optgroup>
-                </select>
-            </div>
-            
-            <div class="control-group full-width">
-                <label for="bdfFile">Or Upload BDF Font File:</label>
-                <input type="file" id="bdfFile" accept=".bdf" />
-                <div class="info" id="fontInfo">Select from dropdown or upload a BDF file</div>
-            </div>
-            
             <div class="control-group full-width">
                 <label for="textInput">Text to Render (leave empty for all characters):</label>
                 <textarea id="textInput" placeholder="Enter text here..."></textarea>
@@ -277,23 +292,7 @@
                 <label for="renderedMaxWidth">Rendered Image Max Width (0 = unlimited):</label>
                 <input type="number" id="renderedMaxWidth" min="0" value="1200" />
             </div>
-            
-           
-            <div class="control-group full-width">
-                <button id="renderBtn" onclick="renderImage()" disabled>🎨 Render PNG</button>
-            </div>
         </div>
-    </div>
-    
-    <div class="container">
-        <h2>Preview</h2>
-        <div class="canvas-container">
-            <canvas id="canvas"></canvas>
-        </div>
-        <div class="info" id="renderInfo">Click "Render PNG" to generate image</div>
-        <button id="downloadBtn" onclick="downloadImage()" style="margin-top: 15px; width: 100%;" disabled>
-            ⬇️ Download PNG
-        </button>
     </div>
 
     <div class="footer" style="background: #1a1a1a; color: white; text-align: center; padding: 30px 40px; margin-top: 0; border-top: 1px solid #333;">
@@ -581,7 +580,6 @@
                             document.getElementById('fontInfo').textContent = 
                                 `✓ Loaded: ${bdfFont.properties.fontName || 'Unknown'} ` +
                                 `(${bdfFont.chars.size} characters)`;
-                            document.getElementById('renderBtn').disabled = false;
                             autoRender(); // Auto-render on font load
                         } catch (error) {
                             document.getElementById('fontInfo').textContent = 
@@ -611,7 +609,6 @@
                         document.getElementById('fontInfo').textContent = 
                             `✓ Loaded: ${bdfFont.properties.fontName || 'Unknown'} ` +
                             `(${bdfFont.chars.size} characters)`;
-                        document.getElementById('renderBtn').disabled = false;
                         autoRender(); // Auto-render on font load
                     } catch (error) {
                         document.getElementById('fontInfo').textContent = 
@@ -643,17 +640,21 @@
         document.getElementById('transparentBg').addEventListener('change', autoRender);
         document.getElementById('blankBetweenLines').addEventListener('change', autoRender);
         
-        // Text alignment - make them mutually exclusive
+        // Text alignment - make them mutually exclusive and prevent unchecking
         const alignmentBoxes = ['normalText', 'centeredText', 'justifiedText', 'fullJustifiedText'];
         alignmentBoxes.forEach(id => {
             document.getElementById(id).addEventListener('change', function() {
                 if (this.checked) {
+                    // Uncheck all others when this one is checked
                     alignmentBoxes.forEach(otherId => {
                         if (otherId !== id) {
                             document.getElementById(otherId).checked = false;
                         }
                     });
                     autoRender();
+                } else {
+                    // Prevent unchecking - at least one must be selected
+                    this.checked = true;
                 }
             });
         });
@@ -966,6 +967,14 @@
                 setTimeout(() => URL.revokeObjectURL(url), 100);
             }, 'image/png');
         }
+        
+        // Load default font on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const fontSelect = document.getElementById('fontSelect');
+            if (fontSelect.value) {
+                fontSelect.dispatchEvent(new Event('change'));
+            }
+        });
     </script>
 </body>
 </html>
