@@ -51,7 +51,8 @@ Below the baseline is usually reserved for tails but with the 'X' fonts, there i
 
 ![image](./8-series/MatrixChunky8X.png)
 
-[ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixChunky8X.bdf) | [TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixChunky8X.ttf) ]
+[ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixChunky8X.bdf) |
+[TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixChunky8X.ttf) ]
 
 ### MatrixLight8
 
@@ -59,7 +60,8 @@ Most characters have been lightened and stylized
 
 ![image](./8-series/MatrixLight8.png)
 
-[ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixLight8.bdf) | [TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixLight8.ttf) ]
+[ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixLight8.bdf) |
+[TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixLight8.ttf) ]
 
 ### MatrixLight8X
 
@@ -67,7 +69,31 @@ Lightened and stylized in 8 full rows - this one looks really good on info scree
 
 ![image](./8-series/MatrixLight8X.png)
 
-[ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixLight8X.bdf) | [TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixLight8X.ttf) ]
+[ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixLight8X.bdf) |
+[TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixLight8X.ttf) ]
+
+---
+
+## 8x6-Series Fonts
+*For use with Arduino GFX Library and others*
+
+### MatrixChunky8x6
+
+Fixed-width, big and blocky like MatrixChunky8
+
+![image](./8-series/MatrixChunky8x6.png)
+
+[ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixChunky8x6.bdf) | 
+[TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixChunky8x6.ttf) ]
+
+### MatrixLight8x6
+
+Fixed-width, lightened and stylized like MatrixLight8
+
+![image](./8-series/MatrixLight8x6.png)
+
+[ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixLight8x6.bdf) |
+[TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixLight8.ttf) ]
 
 ---
 
@@ -82,7 +108,8 @@ Everything big and blocky
 
 ![image](./6-series/MatrixChunky6.png)
 
-[ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixChunky6.bdf) | [TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixChunky6.ttf) ]
+[ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixChunky6.bdf) |
+[TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixChunky6.ttf) ]
 
 ### MatrixChunky6X
 
@@ -90,7 +117,8 @@ Big and blocky in 6 full rows
 
 ![image](./6-series/MatrixChunky6X.png)
 
-[ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixChunky6X.bdf) | [TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixChunky6X.ttf) ]
+[ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixChunky6X.bdf) |
+[TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixChunky6X.ttf) ]
 
 ### MatrixLight6
 
@@ -98,7 +126,8 @@ Lightened and stylized
 
 ![image](./6-series/MatrixLight6.png)
 
-[ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixLight6.bdf) | [TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixLight6.ttf) ]
+[ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixLight6.bdf) |
+[TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixLight6.ttf) ]
 
 ### MatrixLight6X
 
@@ -106,7 +135,8 @@ Lightened and stylized in 6 full rows
 
 ![image](./6-series/MatrixLight6X.png)
 
-[ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixLight6X.bdf) | [TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixLight6X.ttf) ]
+[ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixLight6X.bdf) |
+[TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixLight6X.ttf) ]
 
 ---
 
@@ -114,13 +144,13 @@ Lightened and stylized in 6 full rows
 
 ### Latin-1
 
-#### <ins>Basic Latin</ins>
+#### <u>Basic Latin</u>
 
 ```
 ! "#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
 ```
 
-#### <ins>Latin Extended-A</ins>
+#### <u>Latin Extended-A</u>
 
 ```
 ¡¢£¤¦§¨©ª«¬®¯°±²³´µ¶¥·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ
@@ -134,6 +164,28 @@ Lightened and stylized in 6 full rows
 
 ```
 ĀāĂăĄąĆćĈĉĊċČčĎďĐđĒēĔĕĖėĘęĚěĜĝĞğĠġĢģĤĥĦħĨĩĪīĬĭĮįİıĲĳĴĵĶķĸĹĺĻļĽľĿŀŁłŃńŅņŇňŉŊŋŌōŎŏŐőŒœŔŕŖŗŘřŚśŜŝŞşŠšŢţŤťŦŧŨũŪūŬŭŮůŰűŲųŴŵŶŷŸŹźŻżŽžſ
+```
+
+#### <u>Latin Extended-B</u> _* Only in 8-series Fonts (not in 8x6)_
+
+```
+ƠơƯư
+```
+
+#### <u>Latin Extended Additional</u> _* Only in 8-series Fonts (not in 8x6 except `ẞ`)_
+
+```
+ẞẠạẢảẤấẦầẨẩẪẫẬậẮắẰằẲẳẴẵẶặẸẹẺẻẼẽẾếỀềỂểỄễỆệỈỉỊịỌọỎỏỐốỒồỔổỖỗỘộỚớỜờỞởỠỡỢợỤụỦủỨứỪừỬửỮữỰựỲỳỴỵỶỷỸỹ
+```
+
+A lot of characters in Chunky8 (and some in Light8) had to be pushed below the baseline to make the accent possible.  The 8X fonts are probably okay. I do wonder if the vowels with horns or dots are actually legible (particulary the O's in positions 7896 to 7907).
+
+#### <u>Vietnamese</u> _* Must use 8-series Fonts (not in 8x6)_
+
+Vietnamese uses these characters, which are all part of Basic Latin, Extended-A, Extended-B, and Additional sets:
+
+```
+ABCDEGHIKLMNOPQRSTUVXYabcdeghiklmnopqrstuvxyÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠạẢảẤấẦầẨẩẪẫẬậẮắẰằẲẳẴẵẶặẸẹẺẻẼẽẾếỀềỂểỄễỆệỈỉỊịỌọỎỏỐốỒồỔổỖỗỘộỚớỜờỞởỠỡỢợỤụỦủỨứỪừỬửỮữỰựỲỳỴỵỶỷỸỹ
 ```
 
 #### <u>Cyrillic</u>
@@ -150,25 +202,7 @@ Lightened and stylized in 6 full rows
 
 Note these have not been eye-tested by an actual Greek person.  Please let me know if they're okay!
 
-#### <u>Vietnamese</u> _* Only in 8-series Fonts_
-
-Vietnamese uses these characters, already present in Basic Latin and Extended-A sets:
-
-```
-ABCDEGHIKLMNOPQRSTUVXYabcdeghiklmnopqrstuvxyÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũ
-```
-
-As well as these:
-
-```
-ƠơƯưẠạẢảẤấẦầẨẩẪẫẬậẮắẰằẲẳẴẵẶặẸẹẺẻẼẽẾếỀềỂểỄễỆệỈỉỊịỌọỎỏỐốỒồỔổỖỗỘộỚớỜờỞởỠỡỢợỤụỦủỨứỪừỬửỮữỰựỲỳỴỵỶỷỸỹ
-```
-
-Note these have not been eye-tested by an actual Vietnamese person.  Please let me know if they're okay!
-A lot of characters in Chunky8 (and some in Light8) had to be pushed below the baseline to make the accent possible.  The 8X fonts are probably okay.
-I do wonder if the vowels with horns or dots are actually legible (particulary the O's in positions 7896 to 7907).
-
-#### <u>International Phonetic Alphabet</u> _* Only in 8-series Fonts_
+#### <u>International Phonetic Alphabet</u> _* Only in 8-series Fonts (not in 8x6)_
 
 Please note that these characters are much wider than the standard characters because tails, staffs, and curves are quite important to the IPA. They are mostly based on the Light8 style and are identical in all 8-series fonts.
 
@@ -186,13 +220,13 @@ If you're unable to display all characters, depending on your needs, you can try
 ʮʯ
 ```
 
-#### <u>Korean</u> _* Only in 8-series Fonts (only useful for time and date display)_
+#### <u>Korean</u> _* Only in 8-series Fonts (not in 8x6, only useful for time and date display)_
 
 ```
 오후전일월화수목금토요년
 ```
 
-#### <u>Chinese</u> _* Only in 8-series Fonts (only useful for time and date display)_
+#### <u>Chinese</u> _* Only in 8-series Fonts (not in 8x6, only useful for time and date display)_
 
 ```
 一二三四五六天七八九十星期月上下午年日零〇
@@ -200,7 +234,7 @@ If you're unable to display all characters, depending on your needs, you can try
 
 Note that 上下午 are squished a bit to allow display of 上午 & 下午 more easily.  Also, 零 probably looks terrible.
 
-#### <u>General Punctuation</u>
+#### <u>General Punctuation</u> _* Not in in 8x6 (except `•`)_
 
 ##### Spaces
 The regular space (as available on most keyboards) is 2 pixels wide. Here are some other available spaces.
@@ -265,7 +299,7 @@ The regular hypen-minus (as available on most keyboards) is 3 pixels wide plus a
 ℃℉
 ```
 
-#### Unknown Character Symbols
+#### Unknown Character Symbols _* Not in in 8x6_
 
 One of these characters may appear if the character you call for is unavailable.
 
@@ -368,7 +402,8 @@ Please note that yoffset can be tricky.  You should use a number that correspond
 
 | Date       | Release Notes    |
 | ---------- | ---------------- |
-| 2026.03.08 | Light8X: Minor fix to p and q, web renderer tweaked again |
+| 2026.06.27 | Fixed-width 8x6 fonts added, fixed in all (including similars): `C r ¶ Ð ð ẞ ß Ґ ґ χ` and only in Light: `M e` |
+| 2026.03.08 | Light8X: Minor fix to `p` and `q`, web renderer tweaked again |
 | 2026.03.01 | Python tool added, tweaks to both renderers |
 | 2026.02.27 | Web renderer added, more minor fixes to many glyphs |
 | 2026.02.20 | Unknown characters added to Light fonts, "Character substiutions" removed from all, minor fixes to many glyphs |
@@ -379,10 +414,10 @@ Please note that yoffset can be tricky.  You should use a number that correspond
 | 2023.10.13 | Korean added to 8-series |
 | 2023.10.05 | Readme improved, hyphens and spaces added |
 | 2023.09.23 | Cyrillic added to 8-series |
-| 2023.09.22 | More Unicode characters added, renamed from MatrixClock fonts to Matrix fonts |
+| 2023.09.22 | More Unicode characters added, renamed from MatrixClock Fonts to Matrix Fonts |
 | 2023.09.18 | Added Latin-1 Supplement to 6-series |
-| 2023.07.23 | X-series fonts added (TTF & BDF fonts): Added Latin-1 Supplement to 8-series |
-| 2023.04.06 | 6-series & 8-series fonts based on Tom Thumb: ASCII character set (TTF & BSD fonts) |
+| 2023.07.23 | X-series fonts added: Added Latin-1 Supplement to 8-series |
+| 2023.04.06 | 6-series & 8-series fonts: ASCII character set (TTF & BSD fonts) |
 
 ---
 
