@@ -3,7 +3,7 @@ name: Build and Deploy GitHub Page
 
 on:
   workflow_run:
-    workflows: ["Build and Release Firmware"]
+    workflows: ["Build Page"]
     types:
       - completed
   push:
@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -23,15 +23,16 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: pip install mkdocs-material
+        run: pip install mkdocs-material==9.7.7
 
-      - name: Copy README and images to docs
+      - name: Stage docs from README
         run: |
+          mkdir -p docs
           cp README.md docs/index.md
           cp -r images docs/
 
@@ -44,9 +45,21 @@ jobs:
           # Replace only the first occurrence of 'easier to read' with 'easier to explore'
           sed -i '0,/easier to read/s|easier to read|easier to explore|' docs/index.md
 
-      - name: Convert relative YAML links to GitHub URLs
+      - name: Convert relative repo links to GitHub URLs
+        env:
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
         run: |
-          sed -i 's|](\([^:)]*\.yaml\))|](https://github.com/trip5/Matrix-Fonts/blob/main/\1)|g' docs/index.md
+          BASE="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/blob/${DEFAULT_BRANCH}"
+          # MkDocs only resolves links between documentation pages, so repo files such
+          # as [LICENSE](LICENSE) would 404 on the site.  A target without a colon is
+          # repo-relative; anything containing ':' (https:, mailto:), starting with a
+          # '#' anchor or starting with '/' (site-absolute) is left untouched.
+          # Nothing is hardcoded, so forks rewrite against their own repo + branch.
+          # NOTE: markdown image links (![](images/x.png)) would also match and would
+          # break, since a GitHub blob URL is an HTML page and not an image.  This
+          # README uses raw <img src="images/..."> HTML, which this sed ignores.
+          sed -i -E "s|]\(([^)#/][^):]*)\)|](${BASE}/\1)|g" docs/index.md
+          echo "Relative links rewritten against ${BASE}/"
 
       - name: Copy BDF font files to docs
         run: |
@@ -54,10 +67,10 @@ jobs:
           cp -r 8-series docs/
 
       - name: Build documentation
-        run: mkdocs build
+        run: mkdocs build --strict
 
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

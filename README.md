@@ -42,8 +42,8 @@ Everything big and blocky - looks great as a time screen
 
 ![image](./8-series/MatrixChunky8.png)
 
-[ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixChunky8.bdf) | 
-[TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixChunky8.ttf) ]
+[ [BDF Download](https://downgit.github.io/#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixChunky8.bdf) | 
+[TTF Download](https://downgit.github.io/#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixChunky8.ttf) ]
 
 ### MatrixChunky8X
 
@@ -51,8 +51,8 @@ Below the baseline is usually reserved for tails but with the 'X' fonts, there i
 
 ![image](./8-series/MatrixChunky8X.png)
 
-[ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixChunky8X.bdf) |
-[TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixChunky8X.ttf) ]
+[ [BDF Download](https://downgit.github.io/#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixChunky8X.bdf) |
+[TTF Download](https://downgit.github.io/#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixChunky8X.ttf) ]
 
 ### MatrixLight8
 
@@ -60,8 +60,8 @@ Most characters have been lightened and stylized
 
 ![image](./8-series/MatrixLight8.png)
 
-[ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixLight8.bdf) |
-[TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixLight8.ttf) ]
+[ [BDF Download](https://downgit.github.io/#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixLight8.bdf) |
+[TTF Download](https://downgit.github.io/#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixLight8.ttf) ]
 
 ### MatrixLight8X
 
@@ -69,8 +69,8 @@ Lightened and stylized in 8 full rows - this one looks really good on info scree
 
 ![image](./8-series/MatrixLight8X.png)
 
-[ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixLight8X.bdf) |
-[TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixLight8X.ttf) ]
+[ [BDF Download](https://downgit.github.io/#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixLight8X.bdf) |
+[TTF Download](https://downgit.github.io/#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixLight8X.ttf) ]
 
 ---
 
@@ -83,8 +83,8 @@ Fixed-width, big and blocky like MatrixChunky8
 
 ![image](./8-series/MatrixChunky8x6.png)
 
-[ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixChunky8x6.bdf) | 
-[TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixChunky8x6.ttf) ]
+[ [BDF Download](https://downgit.github.io/#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixChunky8x6.bdf) | 
+[TTF Download](https://downgit.github.io/#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixChunky8x6.ttf) ]
 
 ### MatrixLight8x6
 
@@ -92,8 +92,8 @@ Fixed-width, lightened and stylized like MatrixLight8
 
 ![image](./8-series/MatrixLight8x6.png)
 
-[ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixLight8x6.bdf) |
-[TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixLight8.ttf) ]
+[ [BDF Download](https://downgit.github.io/#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixLight8x6.bdf) |
+[TTF Download](https://downgit.github.io/#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/8-series/MatrixLight8.ttf) ]
 
 ---
 
@@ -108,8 +108,8 @@ Everything big and blocky
 
 ![image](./6-series/MatrixChunky6.png)
 
-[ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixChunky6.bdf) |
-[TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixChunky6.ttf) ]
+[ [BDF Download](https://downgit.github.io/#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixChunky6.bdf) |
+[TTF Download](https://downgit.github.io/#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixChunky6.ttf) ]
 
 ### MatrixChunky6X
 
@@ -117,8 +117,8 @@ Big and blocky in 6 full rows
 
 ![image](./6-series/MatrixChunky6X.png)
 
-[ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixChunky6X.bdf) |
-[TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixChunky6X.ttf) ]
+[ [BDF Download](https://downgit.github.io/#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixChunky6X.bdf) |
+[TTF Download](https://downgit.github.io/#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixChunky6X.ttf) ]
 
 ### MatrixLight6
 
@@ -126,8 +126,8 @@ Lightened and stylized
 
 ![image](./6-series/MatrixLight6.png)
 
-[ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixLight6.bdf) |
-[TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixLight6.ttf) ]
+[ [BDF Download](https://downgit.github.io/#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixLight6.bdf) |
+[TTF Download](https://downgit.github.io/#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixLight6.ttf) ]
 
 ### MatrixLight6X
 
@@ -135,8 +135,8 @@ Lightened and stylized in 6 full rows
 
 ![image](./6-series/MatrixLight6X.png)
 
-[ [BDF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixLight6X.bdf) |
-[TTF Download](https://powernukkit.github.io/DownGit/index.html#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixLight6X.ttf) ]
+[ [BDF Download](https://downgit.github.io/#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixLight6X.bdf) |
+[TTF Download](https://downgit.github.io/#/home?directFile=1&url=https://github.com/trip5/Matrix-Fonts/blob/main/6-series/MatrixLight6X.ttf) ]
 
 ---
 
