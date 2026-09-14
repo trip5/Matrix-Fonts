@@ -54,16 +54,27 @@ jobs:
           DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
         run: |
           BASE="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/blob/${DEFAULT_BRANCH}"
-          # MkDocs only resolves links between documentation pages, so repo files such
-          # as [LICENSE](LICENSE) would 404 on the site.  A target without a colon is
-          # repo-relative; anything containing ':' (https:, mailto:), starting with a
-          # '#' anchor or starting with '/' (site-absolute) is left untouched.
-          # Nothing is hardcoded, so forks rewrite against their own repo + branch.
-          # NOTE: markdown image links (![](images/x.png)) would also match and would
-          # break, since a GitHub blob URL is an HTML page and not an image.  This
-          # README uses raw <img src="images/..."> HTML, which this sed ignores.
+          RAW="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${DEFAULT_BRANCH}"
+          #
+          # 1. Asset targets (images, media, archives) go to RAW urls, and must be done
+          #    first: a blob url is an HTML page, so it renders as a broken image in
+          #    ![alt](image.png) or ![alt](./dir/pic.png), whereas a raw url is the
+          #    image bytes themselves.  The rewritten urls contain a colon, so the
+          #    repo-file rewrite below leaves them alone.
+          #    NOTE: '%' is the s delimiter here, not '|', because the pattern below
+          #    uses '|' for alternation.  A leading './' is dropped so the raw url is
+          #    repo-root relative.
+          sed -i -E "s%]\((\./)?([^)#:/][^)#:]*\.(png|jpe?g|gif|webp|avif|svg|ico|bmp|mp4|webm|pdf|zip|apk))\)%](${RAW}/\2)%gI" docs/index.md
+          #
+          # 2. Any other repo-relative target becomes a blob url.  MkDocs only resolves
+          #    links between documentation pages, so repo files such as
+          #    [LICENSE](LICENSE) would 404 on the site.  A target without a colon is
+          #    repo-relative; anything containing ':' (https:, mailto:), starting with
+          #    a '#' anchor or starting with '/' (site-absolute) is left untouched.
+          #    Nothing is hardcoded, so forks rewrite against their own repo + branch.
           sed -i -E "s|]\(([^)#/][^):]*)\)|](${BASE}/\1)|g" docs/index.md
-          echo "Relative links rewritten against ${BASE}/"
+          echo "Asset links rewritten against ${RAW}/"
+          echo "Repo file links rewritten against ${BASE}/"
 
       - name: Copy BDF font files to docs
         run: |
