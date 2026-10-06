@@ -139,6 +139,12 @@ class LEDRenderer:
     def create_led_pattern(self) -> List[List[float]]:
         """Create LED pattern with logarithmic ring spacing and hybrid intensity"""
         size = self.pixel_size
+
+        # Single pixel: entirely the center — render at full intensity.
+        # (Avoids 0/0 normalisation below, where max_distance == 0.)
+        if size == 1:
+            return [[1.0]]
+
         pattern = []
         
         # Calculate center point

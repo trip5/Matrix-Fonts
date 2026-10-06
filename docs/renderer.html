@@ -459,6 +459,13 @@
 
             createLEDPattern() {
                 const size = this.pixelSize;
+
+                // Single pixel: entirely the center — render at full intensity.
+                // (Avoids 0/0 → NaN normalisation below, where maxDistance === 0.)
+                if (size === 1) {
+                    return [[1.0]];
+                }
+
                 const pattern = [];
                 
                 // Calculate center point
