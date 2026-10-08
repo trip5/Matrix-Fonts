@@ -402,7 +402,7 @@ Please note that yoffset can be tricky.  You should use a number that correspond
 
 | Date       | Release Notes    |
 | ---------- | ---------------- |
-| 2026.10.08 | 8x6 fonts: `« »` bigger |
+| 2026.10.08 | Chunky fonts: `« »` (and bigger in 8x6 fonts) |
 | 2026.10.05 | Renderers minor fix |
 | 2026.06.29 | Chunky8x6: `X x` (including similars) |
 | 2026.06.27 | Fixed-width 8x6 fonts added, fixed in all: `C r ¶ Ð ð ẞ ß Ґ ґ χ` (including similars) and only in Light: `M e` |
