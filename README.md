@@ -402,6 +402,7 @@ Please note that yoffset can be tricky.  You should use a number that correspond
 
 | Date       | Release Notes    |
 | ---------- | ---------------- |
+| 2026.10.09 | Python script tool added to assist in transforming the font to 7-rows-above, 1-row-below font for code that expects a proper baseline |
 | 2026.10.08 | Chunky fonts: `« »` (and bigger in 8x6 fonts) |
 | 2026.10.05 | Renderers minor fix |
 | 2026.06.29 | Chunky8x6: `X x` (including similars) |
